@@ -1,0 +1,21 @@
+<html>
+<head>
+<title> canvas tag</title>
+<script src="cordova-2.4.0.js" charset="utf-8" type="text/javascript"></script>
+<script type="text/javascript" >
+function init() {
+	var canvas = document.getElementById("canvas_1");
+	canvas.addEventListener("touchstart",doTouchStart,false);
+} 
+function doTouchStart(event) {
+	event.preventDerfault();
+	canvas_x = event.targetTouches[0].pageX;
+	canvas_y = event.targetTouches[0].pageY;
+	alert(canvas_x);
+}
+</script>
+</head>
+<body onload=init()>
+<canvas width="400" height="400" id="canvas_1">canvas tag </canvas>
+</body>
+</html>

@@ -1,0 +1,3621 @@
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CPCL-ALTAB</title>
+
+<!-- Jquery Library 1.9.1-->
+<script src="js/jquery-1.8.3.js" type="text/javascript"></script>
+
+<!-- Jquery cordova-2.4.0 -->
+<script src="cordova-2.4.0.js" charset="utf-8" type="text/javascript"></script>
+
+
+<!-- Jquery extra-->
+<script type="text/javascript" src="js/app/code.js"></script>
+<script type="text/javascript" src="js/app/connection.js"></script>
+<script type="text/javascript" src="js/app/login.js"></script>
+<script type="text/javascript" src="js/app/validation.js"></script>
+<script type="text/javascript" src="js/md5.js"></script>
+
+<!-- Jquery prago-->
+<script type="text/javascript" charset="ISO-8859-1" src="js/prago/prago.js"></script>
+<script type="text/javascript" charset="ISO-8859-1" src="js/prago/bluetooth.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/prago/soapclient.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/prago/startapp.js"></script>
+
+
+
+<script type="text/javascript" >
+$(function () {
+	var imageflag = 0;
+});
+</script>
+
+<!-- Jquery UI Library-->
+<script type="text/javascript" src="jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.js"></script>
+<script type="text/javascript" src="js/jquery.timepicker.js"></script>
+<link rel="stylesheet" href="jquery-ui-1.10.3.custom/css/cupertino/jquery-ui-1.10.3.custom.css" />
+<link rel="stylesheet" href="css/jquery.timepicker.css" />
+
+<!-- datatable-->
+<script type="text/javascript" src="js/datatable/jquery.dataTables.js"></script>
+<link rel="stylesheet" href="css/datatable.css" type="text/css" charset="utf-8">
+<script type="text/javascript" src="js/datatable/date.format.js"></script>
+
+<style type="text/css" title="currentStyle">
+	@import "media/css/demo_page.css";
+	@import "media/css/demo_table_jui.css";
+
+#errmsg
+{
+color: red;
+}
+
+	#toast{
+	font-size:12px;
+	position:absolute;
+	z-index:100;
+	top: 70%;
+	left: 50%;
+	width: 200px;
+	margin-left: -100px;
+	border: 1px solid #B1BCCF;
+	background-color: #B1BCCF;
+	padding: 10px 0 ;
+	text-align:center;
+	opacity: .9;
+
+	/*The good stuff */
+	-webkit-transition: opacity 0.5s ease-out;  /* Saf3.2+, Chrome */
+	-moz-transition: opacity 0.5s ease-out;  /* FF4+ */
+	-ms-transition: opacity 0.5s ease-out;  /* IE10? */
+	-o-transition: opacity 0.5s ease-out;  /* Opera 10.5+ */
+	transition: opacity 0.5s ease-out;
+	-moz-border-radius: 4px;
+    	-webkit-border-radius: 4px;
+  	 border-radius: 4px;
+
+}
+#reportdis
+{
+border-collapse:collapse;
+}
+#reportdis td
+{
+border:1px solid black;
+}
+
+
+
+
+</style>
+
+
+<!-- Jquery jqwidgets Library-->
+<script type="text/javascript" src="js/jqx/jqxcore.js"></script>
+<script type="text/javascript" src="js/jqx/jqxbuttons.js"></script>
+<script type="text/javascript" src="js/jqx/jqxscrollbar.js"></script>
+<script type="text/javascript" src="js/jqx/jqxmenu.js"></script>
+<script type="text/javascript" src="js/jqx/jqxlistbox.js"></script>
+<script type="text/javascript" src="js/jqx/jqxdropdownlist.js"></script>
+<script type="text/javascript" src="js/jqx/jqxwindow.js"></script>
+
+<link type="text/css" rel="stylesheet" href="css/jqx.base.css" />
+<link rel="stylesheet" href="css/jqx.summer.css" type="text/css"/>
+
+<!-- jquery ticker-->
+<script language="Javascript" type="text/javascript" src="js/jquery.jticker.js"></script>
+<!-- Screen Dedection style-->
+<link type="text/css" rel="stylesheet" href="css/common.css" />
+<link  rel="stylesheet" href="css/220.css" media="screen and (min-width: 220px) and (max-width: 319px)">
+<link  rel="stylesheet" href="css/320.css" media="screen and (min-width: 320px) and (max-width: 479px)">
+<link  rel="stylesheet" href="css/480.css" media="screen and (min-width: 480px) and (max-width: 639px)">
+<link  rel="stylesheet" href="css/640.css" media="screen and (min-width: 640px) and (max-width: 879px)">
+<link  rel="stylesheet" href="css/768.css" media="screen and (min-width: 880px) and (max-width: 1000px)">
+<link  rel="stylesheet" href="css/1024.css" media="screen and (min-width: 1001px)">
+<link type="text/css" rel="stylesheet" href="css/prago.css" />
+
+
+<!------jqplot Library-->
+<script language="javascript" type="text/javascript" src="js/jqplot/jquery.jqplot.js"></script>
+<script language="javascript" type="text/javascript" src="js/jqplot/jqplot.logAxisRenderer.js"></script>
+<script language="javascript" type="text/javascript" src="js/jqplot/jqplot.barRenderer.js"></script>
+<script language="javascript" type="text/javascript" src="js/jqplot/jqplot.pieRenderer.js"></script>
+<script language="javascript" type="text/javascript" src="js/jqplot/jqplot.categoryAxisRenderer.js"></script>
+<script language="javascript" type="text/javascript" src="js/jqplot/jqplot.highlighter.js"></script>
+<script language="javascript" type="text/javascript" src="js/jqplot/jqplot.pointLabels.js"></script>
+<script type="text/javascript" src="js/jqplot/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="js/jqplot/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="js/jqplot/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script type="text/javascript" src="js/jqplot/jqplot.cursor.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.css" />
+
+
+<!------TABLE PAGING-->
+<script language="javascript" type="text/javascript" src="js/paging.js"></script>
+
+
+<!------MAP BURNS-->
+<script language="javascript" type="text/javascript" src="js/map/jquery.metadata.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/map/jquery.maphilight.js"></script>
+  <script language="javascript" type="text/javascript" src="js/map/controls.js"></script>
+  <script language="javascript" type="text/javascript" src="js/map/dynatext.js"></script>
+
+<!------canvas signature-->
+<script language="javascript" type="text/javascript" src="js/canvas/signature.js"></script>
+
+<!-- Jquery camera-->
+<script type="text/javascript" charset="utf-8" src="js/camera/camserver.js"></script>
+
+<!-- capture image showing-->
+<style>
+  div.demo {
+    background: white none repeat scroll 0 0;
+    border: 1px solid #e5e5e5;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    margin: 5px;
+    padding: 5px;
+    position: relative;
+    width: 355px;
+    height:150px;
+    overflow: auto;
+  }
+  #pat_cap_img{
+    display: inline-block;
+    background: white none repeat scroll 0 0;
+    border: 1px solid #e5e5e5;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    position: relative;
+    width: 95px;
+    height:100px;
+    overflow: auto;
+  }
+#headline  {width: 99%;}
+h1 {
+		text-align: center;
+		color: #444;
+		background-color:#E4F1FB;
+		border-bottom: 1px solid #E4F1FB;
+		font-size: 19px;
+		font-weight: normal;
+		margin: 0 0 14px 0;
+		padding: 14px 15px 10px 15px;
+	}
+p.footer{
+		text-align: center;
+		font-size: 11px;
+		border-top: 1px solid #E4F1FB;
+		line-height: 32px;
+		padding: 0 10px 0 10px;
+		margin: 20px 0 0 0;
+		background-color:#E4F1FB;
+}
+
+#container{
+		margin: 100px;
+		border: 1px solid #D0D0D0;
+    	-webkit-box-shadow: 0 0 8px #D0D0D0;
+}
+#doc_na
+{
+ position:absolute;
+ left: 62%;
+}
+#pat_na
+{
+ position:absolute;
+}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+
+	<h1>Occupational Health & Hygiene Management System</h1><br />
+
+		<div align="center">
+			<table width="50%" >
+			<tr>
+			<td>
+			<label>User Name</label></td>
+			<td>
+			<input type="text" name="unamev" id="unamev" class="tbx usrper" value="doc"></td></tr>
+			<tr><td>
+			<label>Password</label></td>
+			<td>
+			<input type="password" name="passv" id="passv" class="tbx usrper" value="doc123"></td>
+			</tr>
+			  <tr><td colspan=2 align="center"><div id="submit" STYLE="font-size:100%;" class="btn blue">
+			  Login
+			</div>
+			</td>
+			<input type="hidden" id="log_auth" />
+			</tr>
+			</table>
+		<p class="footer">2014 GreenOcean Research Labs Private Limited.</p>
+		</div>
+
+	</div>
+<div class="ui-widget" id="toast" style="display:none;">
+</div>
+       <div id="lonly" style="display:none">
+
+<div id="top-panel">
+<table width="100%"  id="rounded-corner">
+<tr>
+<td valign="top" width="33%"><span> <table class="pan_over"><tr>
+<td class="hd gtx">Basic details</td></tr><tr>
+<td class="gtx">Personal Details</td></tr><tr>
+<td class="gtx">Social History</td></tr><tr>
+<td class="gtx">Occupation</td></tr><tr>
+<td class="gtx">Chief Complaint</td></tr>
+</table></span>
+
+<span> <table class="pan_over">
+<tr></tr><tr>
+<td class="hd gtx">Medical History</td></tr><tr>
+<td class="gtx">OB/Gyn History</td></tr>
+</table></span>
+
+
+
+<span> <table class="pan_over"><tr></tr><tr>
+<td class="hd gtx">Systemic Exam</td></tr><tr>
+<td class="gtx">General Exam</td></tr><tr>
+<td class="gtx">Cardiovascular System</td></tr><tr>
+<td class="gtx">Respiratory System</td></tr><tr>
+<td class="gtx">Abdomen</td></tr><tr>
+<td class="gtx">Eye</td></tr><tr>
+<td class="gtx">ENT</td></tr><tr>
+<td class="gtx">Musculo Skeletal System</td></tr><tr>
+<td class="gtx">Skin System</td></tr><tr>
+<td class="gtx">Central Nervous System</td></tr><tr>
+<td class="gtx">Gynaecological Examination</td></tr><tr>
+<td class="gtx">Injuries</td></tr><tr>
+<td class="gtx">Burns</td></tr>
+</table></span>
+</td>
+<td valign="top" width="33%"><span> <table class="pan_over"><tr></tr><tr>
+<td class="hd gtx">Investigations</td></tr><tr>
+<td class="gtx">Complete Blood Count</td></tr><tr>
+<td class="gtx">Pulmonary Function</td></tr><tr>
+<td class="gtx">Blood Culture</td></tr><tr>
+<td class="gtx">Audiogram</td></tr><tr>
+<td class="gtx">Peripheral Smear</td></tr><tr>
+<td class="gtx">Liver Function Test</td></tr><tr>
+<td class="gtx">Urine Culture</td></tr><tr>
+<td class="gtx">Stool Routine</td></tr><tr>
+<td class="gtx">Serum Electrolytes</td></tr><tr>
+<td class="gtx">Lipid Profile</td></tr><tr>
+<td class="gtx">Stool Culture</td></tr><tr>
+<td class="gtx">Blood Urea</td></tr><tr>
+<td class="gtx">HIV</td></tr><tr>
+<td class="gtx">ECG</td></tr><tr>
+<td class="gtx">Blood Sugar Fasting</td></tr><tr>
+<td class="gtx">HBsAg</td></tr><tr>
+<td class="gtx">Urine Routine</td></tr><tr>
+<td class="gtx">Serum Creatinine</td></tr><tr>
+<td class="gtx">Echo</td></tr>
+</table></span></td>
+<td valign="top"><span> <table class="pan_over"><tr>
+<td class="gtx">X-Ray</td></tr><tr>
+<td class="gtx">Blood Sugar Post Prandial</td></tr><tr>
+<td class="gtx">Blood Sugar Random</td></tr><tr>
+<td class="gtx">Ultrasound Abdomen</td></tr><tr>
+<td class="gtx">Glucose Tolerance</td></tr><tr></tr>
+<tr><td class="hd gtx">Prescription</td></tr>
+</table></span>
+
+<span> <table class="pan_over"><tr></tr><tr>
+<td class="hd gtx" width="33%">Management</td></tr><tr>
+<td class="gtx">Medical Certificate</td></tr><tr>
+<td class="gtx">Fitness Certificate</td></tr><tr>
+<td class="gtx">Report</td></tr>
+</table></span>
+
+<span> <table class="pan_over"><tr></tr><tr>
+<td class="hd gtx">Progress</td></tr>
+</table></span></td>
+</tr>
+</table>
+</div>
+<div id="sub-panel"><span id="shText" class="button">Menu</span></div>
+<br/>
+
+<center>
+<div id="full"> <!-- div0 end-->
+<div id="div0" class="menu"><!-- div0 start-->
+<img src="images/discover.gif" alt="Loading..." style="display:none" id="loadimageajax" > </img> <div class="btn blue" id="Dashboard">Dashboard</div>
+<div class="btn blue" id="Basic-details">Basic details</div>
+<!--<div class="btn blue" id="Personal-History">Personal History</div>-->
+<div class="btn blue" id="Medical-History">Medical History</div>
+<!--<div class="btn blue" id="OB-Gyn-History">OB/Gyn History</div>-->
+<div class="btn blue" id="General-Exam">Systemic Exam</div>
+
+<!--<div class="btn blue" id="Systemic-Exam">Systemic Exam</div>-->
+<div class="btn blue" id="Investigations">Investigations</div>
+<!--<div class="btn blue" id="Provisional-Report">Reports</div>-->
+<!--<div class="btn blue" id="Referral">Referral</div>-->
+<div class="btn blue" id="Prescription">Prescription</div>
+<!--<div class="btn blue" id="Final-Report">Final Report</div>-->
+<!--<div class="btn blue" id="Medical-Certi">Medical Certi</div>-->
+<div class="btn blue" id="Management">Management</div>
+<div class="btn blue" id="Progress">Progress</div>
+<!--<div class="btn blue" id="Fitness-Certificate">Fitness Certificate</div>-->
+<div class="btn blue" id="Settings">Settings</div>
+<div class="btn red" id="Logout">Logout</div>
+
+
+</div><!-- div0 end-->
+
+<div id="heading" class="ui-state-active"> <!-- heading start-->
+<div id="pat_na"></div>  <div id="doc_na"></div><div id="headline"> </div>
+</div>
+<span class="dbcen" id="patdet_dash" style="display:none">
+<table width="99%" class="duin" align="left"><tr>
+<td width="15%">Patient Name</td>
+<td width="1%">:</td>
+<td width="44%"><div id="d_pname"></div></td>
+<td width="15%">Date</td>
+<td width="1%">:</td>
+<td width="34%"><div id="d_cdate"></div></td>
+<td rowspan="4"><div id="cap_hd_pat1" style="display: block;"><img src=""></div></td>
+</tr>
+<tr><td>Patient ID</td>
+<td width="1%">:</td>
+<td width="34%"><div id="d_pid"></div></td>
+<td>Doctor Name</td>
+<td width="1%">:</td>
+<td width="34%"><div id="d_dname"></div></td>
+</tr>
+<tr>
+<td>Address</td>
+<td width="1%">:</td>
+<td><div id="d_paddress"></div></td>
+<td>Time</td>
+<td width="1%">:</td>
+<td><div id="cur_time"></div></td></tr>
+<tr></tr>
+</table>
+</span>
+
+<div id="bdet_sm">
+<div class="btn blue" id="pd_tb">Personal Details</div>
+<div class="btn blue" id="sh_tb">Social History</div>
+<div class="btn blue" id="occ_tb">Occupation</div>
+<div class="btn blue" id="cc_tb">Chief Complaint</div>
+</div>
+
+<div id="med_sm" >
+<div class="btn blue" id="mh_tb">Medical History</div>
+<div class="btn blue" id="obh_tb">OB/Gyn History</div>
+</div>
+<div id="mgmt_sm" >
+<div class="btn blue" id="mg_tb">Management</div>
+<div class="btn blue" id="mc_tb">Medical Certificate</div>
+<div class="btn blue" id="fc_tb">Fitness Certificate</div>
+<div class="btn blue" id="re_tb">Report</div>
+
+</div>
+
+<div id="cc_sm" style="display:none">
+<table>
+<tr><td>Notes</td></tr>
+<tr><td><textarea id="PreNotes" name="PreNotes" class="mediarea"></textarea></td></tr>
+<tr><td>  <button STYLE="font-size:80%;" id="AdperHist" >Update</button></td></tr>
+</table>
+</div>
+<!------------------------------ Dashboard start----------------------------------------------- -->
+
+<div id="dash-dis1" style="display:none">
+
+<!-- patient only -->
+<span class="dbr">
+
+<table height="150" id="welcome_dash_doc" style="display:none" ><tr><td valign="top">
+<!-- Doctors only -->
+<div id="navi_doct" class="dbr" style="dispaly:none">
+<ul class="navigation">
+  <a class="main" href="#">Doctor</a>
+  <li class="n1" id="n1">Schedule</li>
+  <li class="n2" id="n2">Today's Patients</li>
+  <li class="n3" id="n3">Visited Patients</li>
+
+  </ul>
+</div>
+<!-- Doctors only -->
+<!-- admin only -->
+<div id="navi_admin" class="dbr" style="dispaly:none">
+<ul class="navigation">
+  <a class="main" href="#">Admin</a>
+  <li class="n1" id="makap">Create Schedule</li>
+  <li class="n2" id="canap">Cancel Schedule</li>
+  <li class="n3" id="newpatad">New Patient</li>
+  </ul>
+</div>
+<!-- admin only -->
+</tr>
+
+</td>
+</table>
+
+</span>
+<!-- patient only -->
+	<table style="display:none" id="pidget">
+<!-- admin only -->
+<tr>
+<td>
+<label>Patient Id</label></td><td>
+<input type="text" name="empId" id="empId" value="" class="usrper"></td>
+  <td><button id="getdetails" STYLE="font-size:80%; display:none">
+  Get Details
+</button>
+<input type="hidden"  id = "chdate" vlaue="" />
+<input type="hidden"  id = "u_nameq" value="doct" />
+<input type="hidden"  id = "u_name" value="" />
+</td>
+<td><button id="newpat" STYLE="font-size:80%;" >
+  New Patient
+</button></td>
+
+
+</tr>
+<!-- admin only -->
+</table>
+
+
+<span class="dbl">
+
+<div id="doc_can" style="display:none">
+<!--<button id="callcan">cancel app</button>-->
+<div id="checkval1"></div>
+<table id="checkval" class="table1">
+<tr><div id="pageNavPosition"></div></tr>
+</table>
+
+</div>
+
+<!-- admin only -->
+<div class="chrome-window close-btn" style="display:none" id="doc_app">
+  <header>Schedule Appointment</header>
+  
+  <div class="window-inner" contenteditable="false" spellcheck="false">
+
+<table>
+<tr>
+<td>Patient Id</td>
+<td><input type="text" id="schpid" /></td>
+</tr>
+<tr>
+<td>Doctor Name</td>
+<td><input type="text" id="schdn" /></td>
+</tr>
+<tr>
+<td>Date</td>
+<td><input type="text" id="schda" /></td>
+</tr>
+<tr>
+<td>Time</td>
+<td><input type="text" id="schtim" /></td>
+</tr>
+<tr><td><button id="maksched" STYLE="font-size:80%;">Make Schedule</button></td>
+<td><button id="clrsched" STYLE="font-size:80%;">clear</button></td>
+</tr>
+</table>
+
+
+
+  </div>
+</div>
+<!-- admin only -->
+<!-- Doctors only -->
+<div id="dashhist" style="display:none">
+
+<table width="100%" class="ui-widget-header" align="left" class="display dt-example" style="display:none" id="visitpat">
+
+<tr><!--------------------------------------------------- -->
+<td valign="top">
+<div class="ui-state-default" style="padding:1px;">Patients Visited Details</div>
+<table cellpadding="0" cellspacing="0" border="0"  class="display dt-example" id="Histdoc">
+<thead>
+<tr>
+<th>ID</th>
+<th>Checkup Date</th>
+<th>Doctor Name</th>
+</tr>
+</thead>
+<tbody>
+
+</tbody>
+</table>
+</td>
+<!--------------------------------------------------- -->
+</tr>
+
+
+</table>
+
+<table width="100%" class="ui-widget-header" align="left" class="display dt-example" id="Histschetoday" style="display:none">
+
+<tr><!--------------------------------------------------- -->
+
+<td valign="top">
+<div class="ui-state-default" style="padding:1px;">Today's Scheduled Patients</div>
+<table cellpadding="0" cellspacing="0" border="0" class="display dt-example" id="Hist_sche_today" >
+<thead>
+<tr>
+<th>ID</th>
+<th>Date</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+
+</tbody>
+</table>
+</td>
+<!--------------------------------------------------- -->
+</tr>
+</table>
+
+
+<table width="100%" class="ui-widget-header" align="left" class="display dt-example" id="Histsche" style="display:none">
+
+<tr><!--------------------------------------------------- -->
+
+<td valign="top">
+<div class="ui-state-default" style="padding:1px;">Scheduled Patients</div>
+<table cellpadding="0" cellspacing="0" border="0" class="display dt-example" id="Hist_sche" >
+<thead>
+<tr>
+<th>ID</th>
+<th>Date</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+
+</tbody>
+</table>
+</td>
+<!--------------------------------------------------- -->
+</tr>
+</table>
+
+<table width="100%" class="ui-widget-header" align="left" class="display dt-example" id="Histdis" style="display:none">
+
+<tr><!--------------------------------------------------- -->
+
+<td valign="top">
+<div class="ui-state-default" style="padding:1px;">Patient History</div>
+<table cellpadding="0" cellspacing="0" border="0" class="display dt-example" id="Hist" >
+<thead>
+<tr>
+<th>Checkup Date</th>
+<th>Doctor Name</th>
+</tr>
+</thead>
+<tbody>
+
+</tbody>
+</table>
+</td>
+<!--------------------------------------------------- -->
+</tr>
+</table>
+
+<div id= "dash-repo1"  style="display:none">
+<table width="100%" id="reportdis"  class="repoborder reportdis">
+<tr ALIGN="CENTER"><td colspan="2"><div class="ui-state-default" style="padding:3px;">Report</div></td></tr>
+<tr>
+<td>Diagnosis</td>
+<td align="right"><div id="dasrep1"></div></td>
+</tr>
+<tr>
+<td>Clinical findings and diagnostic test</td>
+<td align="right"><div id="dasrep2"></div></td>
+</tr>
+<tr>
+<td>Current treatment plan, including medications</td>
+<td align="right"><div id="dasrep3"></div></td>
+</tr>
+<tr>
+<td>Allergies</td>
+<td align="right"><div id="dasrep4"></div></td>
+</tr>
+<tr>
+<td>Other</td>
+<td align="right"><div id="dasrep5"></div></td>
+</tr>
+</table>
+</div>
+
+
+
+
+<div id="prevpres" style="display:none">
+<!-- ------------------------------------------------- -->
+<table  class="ui-widget-header" align="left" class="display dt-example" width="100%">
+<tr ALIGN="CENTER" class="ui-state-default"><td>PREVIOUS PRESCRIPTION</td></tr>
+<tr>
+<td valign="top" colspan="2">
+<table cellpadding="0" cellspacing="0" border="0"  class="display dt-example" id="pres" width="100%">
+<thead>
+<tr>
+<th>Diagnosis</th>
+<th>Drug</th>
+<th>Brand</th>
+<th>Route</th>
+<th>Dosage</th>
+<th>M</th>
+<th>A</th>
+<th>E</th>
+<th>N</th>
+<th>Dur</th>
+<th>Quantity</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</th>
+</td>
+</tr>
+</table>
+<!--------------------------------------------------- -->
+</div>
+
+
+
+</div>
+<!-- Doctors only -->
+</span>
+
+
+</div>
+
+<!------------------------------ Dashboard end----------------------------------------------- -->
+
+<!-- full start-->
+<div id="pagefull" class="pageful">
+<div id="occupation1" style="display:none">
+<!--<table width="100%">
+<tr><div class="ui-widget-header" style="padding:3px;">Present Employment</div></tr>
+<tr>
+		<td>Job Category</td>
+		<td><input type="text" id="jcat"/></td>
+		<td>Industry</td>
+		<td><input type="text"  id="durationfm" /></td>
+</tr>
+<tr>
+		<td>Task</td>
+		<td><input type="text" id="task"/></td>
+
+</tr>
+<tr>
+		<td>Nature of work</td>
+		<td>
+					 <div id="nowbtn" style="font-size: 60%;font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif"";>
+                <input id="natofwrk1" name="natofwrk" type="radio" value="Manual" >
+                <label for="natofwrk1">Manual</label>
+
+                <input id="natofwrk2" name="natofwrk" type="radio" value="Sedentary" >
+                <label for="natofwrk2">Sedentary</label>
+                </div>
+      </td>
+      <td>Activities</td>
+		<td><input type="text" id="acti"/></td>
+</tr>
+<tr>
+<td></td>
+		<td></td>
+		<td>Work Place</td>
+		<td><input type="text" id="wplace"/></td>
+</tr>
+</table>
+-->
+
+
+
+<center>
+<table width="80%" >
+<tr><div class="ui-widget-header ui-state-default" style="padding:3px;">Present Employment</div></tr>
+<tr><td width="60%">Code</td><td width="40%">Occupation</td> <input type="hidden" id="job_nat_add" /></tr>
+<tr><td><input type="text" id="soc" name="soc" /></td><td><select id="job_nature" style="width:220px"></select></td></tr>
+
+<tr><td>Industry</td><input type="hidden" id="indust_add" /><td>Task/Environment</td></tr>
+<tr><td ><select id="industry_jc" style=" width:220px;display:none"></select><input type="text" id="industry" name="industry" /></td><td><select id="task_jc" style="width:220px"></select></td></tr>
+
+<!--<tr><td>Occupation</td> <input type="hidden" id="job_nat_add" /></tr>
+<tr><td><select id="job_nature" style="width:220px"></select></td></tr>
+<tr><td>Task/Environment</td> <input type="hidden" id="task_add" /> </tr>
+<tr><td><select id="task_jc" style="width:220px"></select></td></tr>-->
+<!--<tr><td>Hazards</td></tr>
+<tr><td><select id="hazards_jc"></select></td></tr>
+<tr><td>Disease</td></tr>
+<tr><td><select id="disease_jc"></select></td></tr>-->
+</table>
+</center>
+
+</div>
+<div id="occupation2" style="display:none" >
+<table  ALIGN="CENTER" class="scrltbl">
+<tr><div class="ui-widget-header ui-state-default" style="padding:3px;">Previous Employment</div></tr>
+<tr><td><div id="preempocc" style="display:none;" class="scrltbl">
+<!--------------------------------------------------- -->
+
+
+<table class="ui-widget-header" align="left" class="display dt-example" width="100%">
+<tr>
+<td valign="top" colspan="2">
+<table  cellpadding="0" cellspacing="0" border="0"  class="display dt-example" id="prempoc">
+<thead><tr>
+<th>Job Title</th>
+<th>Comment</th>
+<th>Company/Employee</th>
+<th>Work Place</th>
+<th>Nature Of Job</th>
+<th>Duration</th>
+<th>Occup_Illness</th>
+</tr></thead><tbody>
+</tbody></table>
+</td>
+</tr>
+</table>
+<!--------------------------------------------------------------------------------------------- -->
+</div></td></tr>
+
+</table>
+
+<div class="dynamic-form" align="center" id="dasprevemp" style="display:none">
+
+	<div class="inputs1">
+		<table class="display dt-example">
+		<tr><th class="ui-state-default">Job Title</th><th class="ui-state-default">Comment</th><th class="ui-state-default">Company/Employee</th><th class="ui-state-default">Work Place</th> <th class="ui-state-default">Nature Of Job</th> <th class="ui-state-default">Duration</th><th class="ui-state-default">Occup_illness</th></tr>
+		<tr>
+		<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpj1 txtsm" name="dynamicpj[]" size="14" /></td>
+		<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpj1" name="dynamicpj[]" size="14" /></td>
+		<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpj1" name="dynamicpj[]" size="14" /></td>
+		<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpj1" name="dynamicpj[]" size="14" /></td>
+		<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpj1 txtsm" name="dynamicpj[]" size="14" /></td>
+		<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpj1 txtsm" name="dynamicpj[]" size="14" /></td>
+		<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpj1 txtsm" name="dynamicpj[]" size="14" /></td>
+		<td><a href="#" class="addprejob"><img src="img/add.png" border="0" width="17" height="17" class="textmiddle"/></a></td>
+		</tr>
+		</table>
+	</div>
+
+	<button id="prevempbsub" STYLE="font-size:80%;">ok</button>
+</div>
+
+</div>
+</div>
+<!-- full end-->
+
+
+ <!--=========================== div1 start=====================================================-->
+<div id="div1" class="divv">
+
+<!------------------------------ basic-dis1 start----------------------------------------------- -->
+<div id="basic-dis1" style="display:none">
+<span class="by2l">
+
+<table>
+<tr><td width="50%">Name</td></tr>
+<tr><td><input type="text"  id="name" name="name" class="charonly" /></td></tr>
+<tr><td  width="50%">Date of Birth</td></tr>
+<tr><td  width="50%"><input type="text" id="DoB" name="DoB" /></td></tr>
+<tr><td>Age</td></tr>
+<tr><td><input type="text" id="Age" name="Age" readonly="true" /></td></tr>
+<tr><td>Identification Marks</td></tr>
+<tr><td><input type="text" id="IdMarks" name="IdMarks" /></td></tr>
+</table>
+
+</span>
+<span class="by2r">
+
+<table>
+
+
+<span id="camera_status1"></span>
+<tr><td colspan="2"><div id="pat_cap_img"><img src="" id="proimg" name="proimg" > </img></div></td></tr>
+<tr><td colspan="2"><div id="cap_hd_pat"> <img id="strdimg" src="" style="height:80px;width:70px;"> </img></div>
+<div id="camcapimg"> <img id="takeprofileimg" src="images/camera-icon.png" style="height:30px;width:30px;"> </img> </div></td></tr>
+<tr><td width="50%">Gender</td></tr>
+<tr><div id="console" STYLE="color:#005a9c;display:none;" align="left"></div>
+	<input id="gend" value="" style="display:none">
+<td colspan="2"> <div id="malerfemale" style="font-size: 70%;font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif"";>
+
+                    <input id="male" name="capture_type" type="radio" value="Male" >
+                    <label for="male">Male</label>
+
+                    <input id="female" name="capture_type" type="radio" value="Female" >
+                    <label for="female">Female</label>
+		    </div></tr>
+
+<tr>
+<td><div class="btnDefault">Weight(Kgs.)
+<img id="wscalespinner" align="right" src="images/spinner-bluey.gif" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+<img id="wsGreen" align="right" src="images/Green.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+<img id="wsOrange" align="right" src="images/Orange.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+<img id="wsRed" align="right" src="images/Red.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+</div> </td><td >Height(cm.)</td>
+</tr>
+<tr>
+<td>
+<div id="wscaleValueReturn" style="font-size:24px;display:none"></div>
+<input type="text" id="Weight" name="Weight" class="vrysml numonly" /> <button id="wscale">
+<img id="wscale" src="images/weighingscal.png"style="height:20px;width:20px;"></img></button>
+</td><td colspan="2"><input type="text" id="Height" name="Height" class="inp numonly"/></td>
+</tr>
+
+
+
+
+</table>
+
+</span>
+
+</div>
+<!------------------------ basic-dis1 end------------------------------------------------------- -->
+
+<!------------------------ Personal History-dis1 start------------------------------------------ -->
+
+<div id="Pers-dis1" style="display:none">
+<span class="by2l">
+
+<table >
+<tr class="ui-state-default"><td width="50%">Smoking</td></tr>
+
+<tr><td>Duration(Yrs.)</td></tr>
+<tr><td><input type="text" id="duration" name="duration" /></td></tr>
+<tr><td>Cigarettes/day</td></tr>
+<tr><td><input type="text" id="cigarettes" name="cigarettes" /></td></tr>
+<tr><td>Pack Years</td></tr>
+<tr><td><input type="text" id="packyrs" name="packyrs" /></td></tr>
+</table>
+
+</span>
+<span class="by2r">
+
+<table>
+<tr class="ui-state-default"><td width="50%">Alcohol</td></tr>
+<input type="hidden" id="PreAlcoholVal"  name="PreAlcoholVal" />
+<tr><td width="50%"> <div data-role="fieldcontain" align="left">
+
+			<select name="alcohol" id="alcohol" data-theme="c"  data-inline="true"  >
+			<option value="None">Select</option>
+			<option value="Excessive">Excessive</option>
+			<option value="Regular">Regular</option>
+			<option value="Occasional">Occasional</option>
+			<option value="Nill">Nill</option>
+		</select>
+	</div></td></tr>
+<tr class="ui-state-default"><td>Ghutka</td></tr>
+<tr><td>Duration (Yrs)</td></tr>
+<tr><td><input type="text" id="Pregutdur" name="Pregutdur" /></td></tr>
+</table>
+
+
+<!--
+<table >
+<tr class="ui-state-default"><td width="50%">Job Category</td></tr>
+<tr><td>Code</td></tr>
+<tr><td><input type="text" id="soc" name="soc" /></td></tr>
+
+<tr><td>Industry</td><input type="hidden" id="indust_add" /></tr>
+<tr><td ><select id="industry_jc" style=" width:220px;display:none"></select></td></tr>
+<tr><td><input type="text" id="industry" name="industry" /></td></tr>
+
+<tr><td>Occupation</td> <input type="hidden" id="job_nat_add" /></tr>
+<tr><td><select id="job_nature" style="width:220px"></select></td></tr>
+<tr><td>Task</td> <input type="hidden" id="task_add" /> </tr>
+<tr><td><select id="task_jc" style="width:220px"></select></td></tr>
+<!--<tr><td>Hazards</td></tr>
+<tr><td><select id="hazards_jc"></select></td></tr>
+<tr><td>Disease</td></tr>
+<tr><td><select id="disease_jc"></select></td></tr>
+</table>-->
+</span>
+</div>
+<!------------------------ Personal History-dis1 end---------------------------------------------- -->
+
+<!------------------------Substance Abuse left side start----------------------------------------- -->
+<!-- -------------------------------------------------
+<div id="dashsubhd" style="display:none">
+<table class="datb" >
+<tr ALIGN="CENTER" class="ui-state-default"><td>SUBSTANCE ABUSE</td></tr>
+<tr><td><div id="dashsub" style="display:none">
+<table class="ui-widget-header" align="left" class="display dt-example" width="100%">
+<tr>
+<td valign="top" colspan="2">
+<table width="100%" cellpadding="0" cellspacing="0" border="0"  class="display dt-example" id="subs">
+<thead ><tr>
+<th >Sub Name</th>
+<th>Route</th>
+<th>Duration</th>
+</tr></thead>
+<tbody></tbody></table>
+</th></td></tr></table>
+</div>
+</td></tr>
+</table>
+
+<div class="dynamic-form" align="center">
+<div class="inputs2" >
+<table class="display dt-example" >
+<tr><th class="ui-state-default" >Sub_Name</th><th class="ui-state-default" >Route</th><th class="ui-state-default" >Duration</th></tr>
+<tr>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="field" name="dynamic[]" size="10"/></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="field txtsm" name="dynamic[]" size="8"/></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="field txtsm" name="dynamic[]" size="8"/></td>
+
+<td><a href="#" class="add"><img src="img/add.png" border="0" width="17" height="17" class="textmiddle"/></a></td>
+</tr>
+</table>
+</div>
+<button id="subssub" STYLE="font-size:80%;" >OK</button>
+
+</div>
+</div>-->
+
+<!--------------------------------------------------- -->
+<!------------------------ Substance Abuse left side end------------------------------------------ -->
+<!------------------------Substance Abuse left side start----------------------------------------- -->
+<!-- ------------------------------------------------- -->
+<div id="dashsubhd" style="display:none">
+<table class="datb" >
+<tr ALIGN="CENTER" class="ui-state-default"><td>SUBSTANCE ABUSE</td><td id="tdsub"><img src="img/add.png" border="0" width="17" height="17" class="textmiddle" id="add"/></td></tr>
+<tr><td><div id="dashsub" style="display:none">
+<table class="ui-widget-header" align="left" class="display dt-example" width="100%">
+<tr>
+<td valign="top" colspan="2">
+<table width="100%" cellpadding="0" cellspacing="0" border="0"  class="display dt-example" id="subs">
+<thead ><tr>
+<th >Sub Name</th>
+<th>Route</th>
+<th>Duration</th>
+
+</tr></thead>
+<tbody></tbody></table>
+</th></td></tr></table>
+</div>
+</td></tr>
+</table>
+
+<div class="dynamic-form" align="center">
+<div class="inputs2" >
+<table class="display dt-example" style="display:none" id="su_ab" >
+<tr><th class="ui-state-default" >Sub_Name</th><th class="ui-state-default" >Route</th><th class="ui-state-default" >Duration</th><td><img src="img/delete.png" border="0" width="17" height="17" class="textmiddle del_ExpenseRow1"/></tr>
+<tr>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="field" name="dynamic[]" size="10"/></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="field txtsm" name="dynamic[]" size="8"/></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="field txtsm" name="dynamic[]" size="8"/></td>
+
+<td><img src="img/add.png" border="0" width="17" height="17" class="textmiddle add"/></td>
+</tr>
+</table>
+</div>
+<button id="subssub" STYLE="font-size:80%; display:none" >OK</button>
+
+</div>
+</div>
+<!------------------------------ Medical History-dis1 start--------------------------------------- -->
+
+<div id="Medi-dis1" style="display:none">
+<table class="datb">
+<tr ALIGN="CENTER" class="ui-state-default"><td>PREVIOUS ILLNESS</td><td id="aill"><img src="img/add.png" border="0" width="17" height="17" class="textmiddle" id="addill" /></td></tr>
+<tr><td><div id="dasPreIll" style="display:none">
+<!--------------------PREVIOUS ILLNESS------------------------------ -->
+<table  class="ui-widget-header" align="left" class="display dt-example " width="100%">
+<tr><td valign="top" colspan="2">
+<table cellpadding="0" cellspacing="0" border="0"  class="display dt-example " id="PreIll" width="100%">
+<thead>
+<tr width="100%">
+<th>Conditions</th>
+<th>Duration</th>
+<th>Treatment</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</td>
+</tr>
+</table>
+<!- -->
+</div></td></tr>
+</table>
+
+<div class="dynamic-form" align="center">
+	<div class="inputs4">
+		<table class="display dt-example" style="display:none" id="pr1">
+		<tr><th class="ui-state-default" >Conditions </th><th class="ui-state-default">Duration</th><th class="ui-state-default">Treatment</th><td><img src="img/delete.png" border="0" width="17" height="17" class="textmiddle del_ExpenseRow3"/></tr>
+		<tr>
+		<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpl condi" id="condition1" name="dynamicpl[]" size="4"/></td>
+		<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpl" name="dynamicpl[]"size="4"/></td>
+		<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpl" name="dynamicpl[]"size="4"/></td>
+		<td><img src="img/add.png" border="0" width="17" height="17" class="textmiddle" id="a_ill"/></td>
+		 </tr>
+		</tr>
+		</table>
+	</div>
+	<button id="previllsub" STYLE="font-size:80%; display:none ">OK</button>
+</div>
+<!--------------------PREVIOUS ILLNESS------------------------------ -->
+<table class="datb">
+<tr ALIGN="CENTER" class="ui-state-default"><td>ALLERGY</td><td id="aaller"><img src="img/add.png" border="0" width="17" height="17" class="textmiddle" id="addallergy"/></td></tr>
+<tr><td><div id="dasAllergy" style="display:none">
+<!-- -----------------------Allergy-------------------------- -->
+<table class="ui-widget-header" align="left" class="display dt-example" width="100%">
+<tr>
+<td valign="top" colspan="2">
+<table cellpadding="0" cellspacing="0" border="0"  class="display dt-example" id="Allergy" width="100%">
+<thead>
+<tr>
+<th>Medication</th>
+<th>Others</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</th>
+</td>
+</tr>
+</table>
+</div></td></tr>
+</table>
+
+<!-- ------------------------------------------------- -->
+
+
+<div class="dynamic-form" align="center">
+
+<div class="inputs7">
+
+<table class="display dt-example" id="algy" style="display:none">
+<tr><th class="ui-state-default">Medication</th><th class="ui-state-default">Others</th><td><img src="img/delete.png" border="0" width="17" height="17" class="textmiddle del_ExpenseRow4"/></td></tr>
+<tr>
+<td class="ui-state-default" rowspan="1" colspan="1" ><input type="text" class="fieldallergy" name="dynamicallergy[]" size="15"></td>
+<td class="ui-state-default" rowspan="1" colspan="1" ><input type="text" class="fieldallergy" name="dynamicallergy[]" size="15"></td>
+<td><img src="img/add.png" border="0" width="17" height="17" class="textmiddle addallergy"/></td>
+
+</tr>
+</table>
+
+</div>
+
+<button id="allersub" STYLE="font-size:80%; display:none">OK</button>
+
+</div>
+</div>
+<!-- ----------------------Allergy--------------------------- -->
+<!------------------------ Medical History-dis1 end----------------------------------------------- -->
+
+<!------------------------------ OB/Gyn History-dis1 start---------------------------------------- -->
+<div id="OBGyn-dis1" style="display:none">
+<span class="by2l">
+
+<table >
+<tr class="ui-state-default"><td  width="50%">Menstural History</td></tr>
+<tr><td width="50%">Age at menarche</td></tr>
+<tr><td><input type="text" id="mhAge" name="mhAge" /></td></tr>
+<tr><td>Mensturation - Regularity</td></tr>
+<tr><td><input type="text" id="mhReg" name="mhReg" /></td></tr>
+<tr><td>Mensturation - Periodicity</td></tr>
+<tr><td><input type="text" id="mhPer" name="mhPer" /></td></tr>
+<tr><td>Mensturation - Duration	</td></tr>
+<tr><td><input type="text" id="mhDur" name="mhDur" /></td></tr>
+<tr><td>Mensturation - Pain</td></tr>
+<tr><td><input type="text" id="mhPn" name="mhPn" /></td></tr>
+<tr><td>Mensturation - Flow</td></tr>
+<tr><td><input type="text" id="mhFlw" name="mhFlw" /></td></tr>
+<tr><td>Menopause</td></tr>
+<tr><td><input type="text" id="mhMP" name="mhMP" /></td></tr>
+<tr><td>Duration since menopause</td></tr>
+<tr><td><input type="text" id="mhDSM" name="mhDSM" /></td></tr>
+<tr class="ui-state-default"><td  width="50%">Others</td></tr>
+<tr><td><input type="text" id="mhOth" name="mhOth" /></td></tr>
+</table>
+
+</span>
+<span class="by2r">
+
+<table >
+<tr class="ui-state-default"><td  width="50%">Breasts</td></tr>
+<tr><td width="50%">Left</td></tr>
+<tr><td><input type="text" id="mhBrL" name="mhBrL" /></td></tr>
+<tr><td>Right</td></tr>
+<tr><td><input type="text" id="mhBrR" name="mhBrR" /></td></tr>
+<tr><td>Breast Feeding</td></tr>
+<tr><td><input type="text" id="mhBrBF" name="mhBrBF" /></td></tr>
+<tr class="ui-state-default"><td  width="50%">Vaginal Discharge</td></tr>
+<tr><td>Discharge</td></tr>
+<tr><td><input type="text" id="mhVD" name="mhVD" /></td></tr>
+<tr><td>Duration</td></tr>
+<tr><td><input type="text" id="mhVDDur" name="mhVDDur" /></td></tr>
+<tr><td>Odour</td></tr>
+<tr><td><input type="text" id="mhVDOd" name="mhVDOd" /></td></tr>
+<tr class="ui-state-default"><td  width="50%">Contraception</td></tr>
+<tr><td>Method</td></tr>
+<tr><td><input type="text" id="mhConMth" name="mhConMth" /></td></tr>
+<tr><td>Duration</td></tr>
+<tr><td><input type="text" id="mhConDur" name="mhConDur" /></td></tr>
+</table>
+
+</span>
+</div>
+<!------------------------------ OB/Gyn History-dis1 end------------------------------------------- -->
+
+<!------------------------------ General Exam-dis1 start------------------------------------------- -->
+
+<!------------------------ General Exam-dis1 end------------------------------------------------ -->
+
+<!------------------------  Report start------------------------------------------------- -->
+<div id= "provi-rep1xt" style="display:none">
+<table width="50%">
+	<div class="ui-state-default" style="padding:3px;">Provisional Report</div>
+	<tr><td>Findings</td>
+	<td><textarea class="txtaramd" id="prvRepFnd" name="prvRepFnd"></textarea></td>
+	</tr>
+	<tr>
+	<td>Further Investigations</td>
+	<td><textarea class="txtaramd" id="prvRepFI"  name="prvRepFI"></textarea></td>
+	</tr>
+	<tr>
+	<td>Recommendations</td>
+	<td><textarea class="txtaramd" id="prvRepRec" name="prvRepRec"></textarea></td></tr>
+        <tr> <td colspan=2 align="center"> <button id="AdProvision"  STYLE="font-size:80%;" type='submit'> Update</button> </td>  </tr>
+	</table>
+        </div>
+<!------------------------  Report end------------------------------------------------------- -->
+
+<!------------------------Management start----------------------------------------------------- -->
+
+<div id= "mgmt1" style="display:none">
+
+<table>
+        <div class="ui-state-default" style="padding:3px;">Management</div>
+			<tr>
+				<td><div align="left">Findings</div></td>
+				<td><textarea class ="txtaramd"  id="MgmtRepFnd"  name="MgmtRepFnd"></textarea></td>
+			</tr>
+			<tr>
+				<td><div align="left">Further Investigations</div></td>
+				<td><textarea  class ="txtaramd" id="MgmtRepFI" name="MgmtRepFI"></textarea></td>
+			</tr>
+			<tr>
+				<td><div align="left">Treatment</div></td>
+				<td><textarea  class ="txtaramd" id="MgmtRepRec"   name="MgmtRepRec"></textarea></tr></table><table>
+<tr><td align="center">
+                <button id="AdManagement"  STYLE="font-size:80%;" type='submit'>Update</button></td></tr>
+		</table>
+
+</div>
+
+<!------------------------ Management end------------------------------------------------------- -->
+
+<!-- progress start -->
+<div id="progchar" style="display:none">
+<table>
+	<tr>
+		<td>
+		<div id="chart1" style="width:100%;height:150px;"></div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<div id="PulseChart" style="width:100%;height:150px;"></div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<div id="BPChart" style="width:100%;height:200px;"></div>
+		</td>
+	</tr>
+</table>
+<!-- progress end -->
+</div>
+
+
+
+</div>
+<!--===================== div1 end=============================-->
+
+<div id="div2ex" class="divv" style="display:none1">
+
+<!-- Progress start -->
+<div id= "prog1" style="display:none">
+
+
+<table width="100%">
+	<tr>
+		<td colspan="9" align="center">
+		<div class="ui-widget-header" style="padding:3px;">Vitals</div>
+		</td>
+	</tr>
+	<tr>
+
+		<td><button  id="temp" name="temp">
+	<img src="images/thermo.png" style="height:30px;width:27px;"></img></button>
+	</td><td>
+	<div id="thermValueReturn" style="font-size:24px;display:none;"></div>
+	<input type="text" placeholder= "Thermometer" id="erTemp" name="erTemp"  class="" />
+	<div class="btnDefault">
+	<img id="tempGreen" align="right" src="images/Green.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="tempOrange" align="right" src="images/Orange.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="tempRed" align="right" src="images/Red.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	</div>
+	<img id="tempspinner" align="right" src="images/spinner-bluey.gif" style="display:none;height:30px;width:30px;"  class="ui-btn-right"/>
+	</td>
+
+		<td><button  id="pox" name="pox">
+	<img src="images/pox.png" style="height:30px;width:27px;"></img></button>
+	</td><td>
+	<div id="poxValueReturn" style="font-size:24px;display:none;"></div>
+	<input type="text" placeholder="Pulse Oximeter" id="erPulse" name="erPulse" class="" />
+	<div class="btnDefault">
+	<img id="poxGreen" align="right" src="images/Green.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="poxOrange" align="right" src="images/Orange.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="poxRed" align="right" src="images/Red.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	</div>
+	<img id="poxspinner" align="right" src="images/spinner-bluey.gif" style="display:none;height:30px;width:30px;"  class="ui-btn-right"/>
+	</td></tr>
+   <tr>
+		<td><button  id="bpm" name="bpm">
+	<img src="images/bp.png" style="height:30px;width:27px;"></img></button>
+	</td><td>
+	<div id="bpmValueReturn" style="font-size:24px;display:none;"></div>
+	<input type="text" placeholder="B.P" id="erBP" name="erBP" class="" />
+	<div class="btnDefault">
+	<img id="bpmGreen" align="right" src="images/Green.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="bpmOrange" align="right" src="images/Orange.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="bpmRed" align="right" src="images/Red.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	</div>
+	<img id="bpspinner" align="right" src="images/spinner-bluey.gif" style="display:none;height:30px;width:30px;"  class="ui-btn-right"/>
+	</td>
+	<td><button  id="glucometer" name="glucometer">
+	<img src="images/sml.png" style="height:30px;width:27px;"></img></button>
+	</td><td>
+	<div id="glucoValueReturn" style="font-size:24px;display:none;"></div>
+	<input type="text" placeholder="Glucometer" id="erGul" name="erGul" class="" />
+	<div class="btnDefault">
+	<img id="glucometerGreen" align="right" src="images/Green.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="glucometerOrange" align="right" src="images/Orange.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="glucometerRed" align="right" src="images/Red.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	</div>
+	<img id="glucospinner" align="right" src="images/spinner-bluey.gif" style="display:none;height:30px;width:30px;"  class="ui-btn-right"/>
+	</td>
+	</tr>
+	<tr>
+		<td colspan="9" align="center">
+	<button id="vitalsUpdate" STYLE="font-size:80%;">Update Vitals</button>
+		</td>
+	</tr>
+</table>
+
+
+
+</div>
+<!-- Progress end -->
+
+</div>
+<!--===================== div2 start===========================-->
+<div id="div2" class="divv">
+
+<!------------------------------ basic-dis2 start----------------------------------------------- -->
+<div id="basic-dis2" style="display:none">
+<span class="by2l"> <!-- by2l start-->
+<table >
+<tr><td> Street Address</td></tr>
+<tr><td><input type="text" id="txtAddress1Current" name="txtAddress1Current" /></td></tr>
+<tr><td> Mail ID</td></tr>
+<tr><td><input type="text" id="mailid" name="mailid" class="" /></td></tr>
+<tr><td>Phone/Cell</td></tr>
+<tr><td><input type="text" id="phnum" name="phnum" class="numonly" /></td></tr>
+<tr><td width="50%">Pincode</td></tr>
+<tr><td> <div id="pincode">
+<input type="text"  name="pincode" id="pincode1" class="numonly" pattern="[0-9]{6}" />
+</div> </td></tr>
+</table>
+</span>  <!-- by2l end-->
+
+<span class="by2r">  <!-- by2r start-->
+<table >
+<tr><td  width="50%">Post Office Area</td></tr>
+<input type="hidden" id="areavalue" />
+<tr><td><div id="jqxdropdownlist">
+<input type ="text"  class="tbx" id = "are" name="are" readonly="readonly" />
+</div></td></tr>
+<tr><td>City</td></tr>
+<tr><td><input type="text" id="cityname" name="cityname" readonly="true" /></td></tr>
+<tr><td width="50%">State</td></tr>
+<tr><td><input type="text" id="cmbStateCurrent" name="cmbStateCurrent" readonly="true" /></td></tr>
+<tr><td>Country</td></tr>
+<tr><td><input type="text" id="cmbCountryCurrent" readonly="true" /></td></tr>
+<tr><td></td></tr>
+<tr><td><button STYLE="font-size:80%;" id="AdBscDtl">Update</button>
+</td></tr>
+</table>
+</span> <!-- by2r end-->
+</div>
+<!------------------------------ basic-dis2 end----------------------------------------------- -->
+
+<!------------------------------ Personal History-dis2 start---------------------------------- -->
+<div id="Pers-dis2" style="display:none">
+<span class="by2l"> <!-- by2l start-->
+<table >
+<tr class="ui-state-default"><td>Marital Status</td></tr>
+<tr><td> <input type="hidden" id="PreMSVal" />
+                    <div data-role="fieldcontain" >
+
+		    <select name="marital_status" id="marital_status" data-theme="c"  data-inline="true">
+			<option value="None">Select</option>
+			<option value="Unmarried">Unmarried</option>
+			<option value="Married">Married</option>
+			<option value="Divorced">Divorced</option>
+			<option value="Widow/Widower">Widow/Widower</option>
+		   </select>
+	      </div></td></tr>
+<tr class="ui-state-default"><td  width="50%">Children</td></tr>
+<tr><td  width="50%">No. Of Children</td></tr>
+<tr><td  width="50%"><input type="text" id="child" name="child" /></td></tr>
+<tr><td>Age of Oldest	</td></tr>
+<tr><td><input type="text" id="ageofold" name="ageofold" /></td></tr>
+<tr><td>Age Of Youngest</td></tr>
+<tr><td><input type="text" id="young" name="young" /></td></tr>
+<tr><td>Family Planning</td></tr><input type="hidden" id="famplantxt" />
+<tr><td><div id="famplan" style="font-size: 70%;font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";>
+			     	       	<input type="radio" name="Family-Planing" id="Yes" value="Yes"  />
+			         	<label for="Yes">Yes</label>
+			         	<input type="radio" name="Family-Planing" id="No" value="No" />
+			         	<label for="No">No</label>
+				</div></td></tr>
+
+
+</table>
+
+</span>  <!-- by2l end-->
+
+<span class="by2r">  <!-- by2r start-->
+<table >
+<tr class="ui-state-default"><td>Education</td></tr>
+<tr><td ><div id="educate" style="font-size: 70%;font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";>
+			     	       	<input type="radio" name="education-rad" id="Illiterate" value="Illiterate"  />
+			         	<label for="Illiterate">Illiterate</label>
+			         	<input type="radio" name="education-rad" id="Literate" value="Literate" />
+			         	<label for="Literate">Literate</label>
+			</div>	</tr>
+<!--<tr><td>Job Category</td></tr>
+<tr><td><input type="text"  name="jobCategory" id="jobCategory" /></td></tr>-->
+<tr width="50%"><td width="50%"> Diet</td></tr>
+<tr> <input type="hidden" id="PreDietVal" />
+<input type="hidden" id="PreHandVal" />
+<input type="hidden" id="PreEduVal" />
+<td><div id="diet" style="font-size: 70%;font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";>
+
+			     	       	<input type="radio" name="Diet-rad" id="Veg" value="Veg"  />
+			         	<label for="Veg">Veg</label>
+			         	<input type="radio" name="Diet-rad" id="Non-Veg" value="Non-Veg" />
+			         	<label for="Non-Veg">Non-Veg</label>
+			</div></td></tr>
+
+<tr><td>Dominant Hand</td></tr>
+<tr><td> <div id="dhand" style="font-size: 70%;font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";>
+
+			     	       	<input type="radio" name="Dominant-Hand" id="left" value="Left"  />
+			         	<label for="left">Left</label>
+			         	<input type="radio" name="Dominant-Hand" id="right" value="Right" />
+			         	<label for="right">Right</label>
+
+		    </div></td></tr>
+
+</table>
+</span> <!-- by2r end-->
+</div>
+<!------------------------------ Personal History-dis2 end------------------------------------- -->
+<!------------------------------medical History-dis2 start------------------------------------ -->
+<div id="medi-dis2" style="display:none">
+<!--------------------------------------------------- -->
+<table class="datb">
+<tr ALIGN="CENTER" class="ui-state-default"><td>IMMUNISATION</td><td id="immun1"><img src="img/add.png" id="immun" border="0" width="17" height="17" class="textmiddle"/></td></tr>
+<tr><td><div id="dasimmu" style="display:none">
+<table class="ui-widget-header" align="left" class="display dt-example" width="100%">
+<tr>
+<td valign="top" colspan="2">
+<table cellpadding="0" cellspacing="0" border="0"  class="display dt-example" id="immu" width="100%">
+<thead>
+<tr><th>Vaccine</th>
+<th>Date Given</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</th></td></tr>
+</table>
+</div></td></tr>
+</table>
+	<div class="dynamic-form" align="center">
+	<div class="inputs6">
+		<table class="display dt-example" id="im_sn" style="display:none">
+		<tr><th class="ui-state-default">Vaccine</th><th class="ui-state-default">Date Given</th><td><img src="img/delete.png" border="0" width="17" height="17" class="textmiddle del_ExpenseRow5"/></td></tr>
+		<tr>
+		<td class="ui-state-default" rowspan="1" colspan="1"><input type="text"  class="fieldimm" id="vaccine1" name="dynamicimm[]"size="9"/></td>
+		<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" id="dg" class="fieldimm" name="dynamicimm[]" size="10"/></td>
+		<td><img src="img/add.png" border="0" width="17" height="17" class="textmiddle" id="addimm"/></td>
+		</tr>
+		</table>
+	</div>
+	<button id="immsub" STYLE="font-size:80%; display:none">OK</button>
+</div>
+<!----------------------------------------------------- 10986 7409-->
+<!--------------------------------------------------- -->
+
+<table class="datb">
+<tr ALIGN="CENTER" class="ui-state-default"><td>FAMILY HISTORY</td><td id="adfh"><img src="img/add.png" border="0" width="17" height="17" class="textmiddle" id="addfh1"/></td></tr>
+<tr><td><div id="dasFamily" style="display:none">
+<table class="ui-widget-header" align="left" class="display dt-example" width="100%">
+<tr>
+<td valign="top" colspan="2">
+<table cellpadding="0" cellspacing="0" border="0"  class="display dt-example" id="Family" width="100%">
+<thead><tr><th>Relation</th>
+<th>Illness</th>
+</tr></thead>
+<tbody></tbody></table></th>
+</td></tr>
+</table>
+</div></td></tr>
+</table>
+
+	<div class="dynamic-form" align="center">
+
+		<div class="inputs5">
+			<table class="display dt-example" style="display:none" id="adfh1">
+			<tr><th class="ui-state-default">Illness</th><th class="ui-state-default">Relation</th><td><a href="#" class="del_ExpenseRow6"><img src="img/delete.png" border="0" width="17" height="17" class="textmiddle"/></a></td></tr>
+			<tr>
+
+			<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldfh" id="illness1" name="dynamicfh[]" size="7"/></td>
+			<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldfh" name="dynamicfh[]" size="7"/> </td>
+			<td><img src="img/add.png" border="0" width="17" height="17" class="textmiddle addfh" /></td>
+			</tr>
+			</table>
+		</div>
+
+	<button id="famhissub" STYLE="font-size:80%; display:none;">OK</button>
+
+	</div>
+
+</div>
+<!--------------------------------------------------- -->
+<!------------------------------ medical History-dis2 end-------------------------------------- -->
+
+<!------------------------------ OB/Gyn History-dis2 start------------------------------------- -->
+<div id="OBGyn-dis2" style="display:none">
+<span class="by2l"> <!-- by2l start-->
+<table >
+<tr class="ui-state-default"><td  width="50%">Obstetric history</td></tr>
+<tr><td>No of Children</td></tr>
+<tr><td><input type="text" id="ohChild"     name="ohChild" /></td></tr>
+<tr><td>Age of oldest</td></tr>
+<tr><td><input type="text" id="ohChildOld"     name="ohChildOld" /></td></tr>
+<tr><td>Age of youngest	</td></tr>
+<tr><td><input type="text" id="ohChildYng"     name="ohChildYng" /></td></tr>
+<tr><td>Abortion</td></tr>
+<tr><td><input type="text" id="ohAbr"     name="ohAbr" /></td></tr>
+<tr><td>Still Birth</td></tr>
+<tr><td><input type="text" id="ohSB"   size="10"   name="ohSB"  /></td></tr>
+<tr><td>Mode of Delivery</td></tr>
+<tr><td><input type="text" id="ohMoD"   size="10"   name="ohMoD" /></td></tr>
+<tr><td>Pregnancy Related Complications	</td></tr>
+<tr><td><input type="text" id="ohPRC"   size="10"   name="ohPRC" /></td></tr>
+<tr><td>Post Partum Complications</td></tr>
+<tr><td><input type="text" id="ohPPC"   size="10"   name="ohPPC" /></td></tr>
+<tr><td>Others</td></tr>
+<tr><td><input type="text"  id="ohOth"   size="10"   name="ohOth" /></td></tr>
+
+</table>
+</span> <!-- by2r end-->
+<span class="by2r">  <!-- by2r start-->
+<table>
+<tr class="ui-state-default"><td  width="50%">Notes</td></tr>
+<tr><td>Notes</td></tr>
+<tr><td><textarea  id="ohNotes" ></textarea></td></tr>
+<tr><td> <button id="AdObGyn" STYLE="font-size:80%;"> Update</button></td></tr>
+</table>
+</span> <!-- by2r end-->
+</div>
+<!------------------------------ OB/Gyn History-dis2 end--------------------------------------- -->
+
+<!------------------------------ General Exam-dis2 start--------------------------------------- -->
+
+<!------------------------------ General Exam-dis2 end---------------------------------------- -->
+
+<!------------------------ Final Report start----------------------------------------------------- -->
+<div id= "final-rep1xt" style="display:none">
+<table>
+
+	<div class="ui-state-default" style="padding:3px;">Final Report</div>
+	<tr>
+	<td><div align="left" >Diagnosis</div></td>
+	<td><textarea class="txtaramd" id="finRepFnd" name="finRepFnd"></textarea></td>
+	</tr>
+	<tr>
+	<td><div align="left">Recommendations</div></td>
+	<td><textarea class="txtaramd" id="finRepFI" name="finRepFI"></textarea></td>
+	</tr>
+	<tr>
+	<td></td>
+	</tr></table><table>
+	<tr>
+	<td align="center">
+        <button id="AdFinalRep"  STYLE="font-size:80%;" type='submit'>Update</button>
+	 </td>
+	</tr>
+	</table>
+
+</div>
+<!------------------------ Final Report end------------------------------------------------------- -->
+
+<!------------------------ Referral  start----------------------------------------------------- -->
+
+<div id= "referal1" style="display:none">
+<table width="60%">
+<div class="ui-state-default" style="padding:3px;">Referral</div>
+	<tr>
+		<td><div align="left">Specialities</div></td>
+		<td><textarea class="txtaramd"  id="Specialities" name="Specialities"></textarea></td>
+	</tr>
+	<tr>
+		<td><div align="left">Name of Doctors</div></td>
+		<td><textarea  class="txtaramd"  id="Name_Doc"     name="Name_Doc"></textarea></td>
+	</tr>
+	<tr>
+		<td><div align="left" >Address of Hospitals/Clinics</div></td>
+		<td><textarea  class="txtaramd"  id="Address"     name="Address"></textarea></td></tr>
+	<tr><td colspan=2 align="center"><button id="AdReferral" STYLE="font-size:80%;" type='submit'> Update </button>	</td>
+	</tr>
+	</table>
+</div>
+<!------------------------ Referral  end------------------------------------------------------- -->
+<!------------------------ progress obj start------------------------------------------------------- -->
+<div id="progobj" style="display:none">
+<table>
+	<tr>
+		<td>Examination</td>
+		<td ><textarea id="emrPrgEx"  name="emrPrgEx" class="txtaramd"></textarea></td>
+	</tr>
+	<tr>
+		<td>Treatment</td>
+		<td ><textarea id="emrPrgTr" name="emrPrgTr" class="txtaramd"></textarea></td>
+	</tr>
+	<tr>
+		<td>Further Investigations</td>
+		<td ><textarea id="emrPrgFI" name="emrPrgFI" class="txtaramd"></textarea><br>
+		<button id="AdProg" STYLE="font-size:100%;" type='submit'>
+		Update Details
+		</button>
+		</td>
+	</tr>
+</table>
+</div>
+<!------------------------ progress obj end------------------------------------------------------- -->
+
+
+</div>
+
+<!--===================== div2 end===========================-->
+
+
+
+
+<!------------------------------ Current Medication start------------------------------------- -->
+<div id="Cur-dis1" style="display:none">
+
+<table class="datbfull" ALIGN="CENTER">
+<tr ALIGN="CENTER" class="ui-state-default"><td>CURRENT MEDICATION</td><td id="a_medi"><img src="img/add.png" border="0" width="17" height="17" class="textmiddle" id="addmed" /></td></tr>
+<tr><td><div id="dasCurr" style="display:none">
+<!--------------------------------------------------- -->
+
+
+<table class="ui-widget-header" align="left" class="display dt-example" width="100%">
+<tr>
+<td valign="top" colspan="2">
+<table cellpadding="0" cellspacing="0" border="0"  class="display dt-example" id="Curr">
+<thead><tr>
+<th>Drug</th>
+<th>Brand</th>
+<th>Route</th>
+<th>Dosage</th>
+<th>M</th>
+<th>A</th>
+<th>E</th>
+<th>N</th>
+<th>Dur</th>
+<th>Remarks</th>
+</tr></thead><tbody>
+</tbody></table>
+</th>
+</td>
+</tr>
+</table>
+<!--------------------------------------------------------------------------------------------- -->
+</div></td></tr>
+
+</table>
+
+
+
+<div class="dynamic-form" align="center">
+<div class="inputs9">
+<table class="display dt-example" id="medi" style="display:none">
+<tr><th class="ui-state-default">Drug</th><th class="ui-state-default">Brand</th><th class="ui-state-default">Route</th><th class="ui-state-default">Dosage</th><th class="ui-state-default">M</th><th class="ui-state-default">A</th><th class="ui-state-default">E</th><th class="ui-state-default">N</th><th class="ui-state-default">Dur</th><th class="ui-state-default">Remarks</th><td><img src="img/delete.png" border="0" width="17" height="17" class="curmed"></td></tr>
+<tr>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldmedi1 drugg" name="dynamicmedi1[]" id="drugc1" size="6"/></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldmedi1 brandd" name="dynamicmedi1[]" id="brandc1" size="6" /></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldmedi1 routee" name="dynamicmedi1[]" id="routec1" size="6" /></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldmedi1 vrysml" name="dynamicmedi1[]" id="dosagec1" size="6"/></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldmedi1 vrysml" name="dynamicmedi1[]" id="morc1" size="3"/></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldmedi1 vrysml" name="dynamicmedi1[]" id="aftc1" size="3"/></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldmedi1 vrysml" name="dynamicmedi1[]" id="evec1" size="3"/></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldmedi1 vrysml" name="dynamicmedi1[]" id="nitec1" size="3"/></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldmedi1 vrysml" name="dynamicmedi1[]" id="durc1" size="6"/></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldmedi1" name="dynamicmedi1[]" id="remksc1" size="6"/></td>
+
+
+<td><img src="img/add.png" border="0" width="17" height="17" class="textmiddle" id="addmedi1" /></td>
+</tr>
+</table>
+</div>
+<button id="curmedisub" STYLE="font-size:80%; display:none">OK</button>
+
+</div>
+
+
+
+
+
+</div>
+<div id="cur_med_das" style="display:none">
+<table class="ui-widget-header" align="left" class="display dt-example" width="100%">
+<tr>
+<td valign="top" colspan="2">
+<center><div class="ui-state-default" style="padding:3px;">CURRENT MEDICATION</div></center>
+<table cellpadding="0" cellspacing="0" border="0"  class="display dt-example" id="Currdash">
+<thead><tr>
+<th>Drug</th>
+<th>Brand</th>
+<th>Route</th>
+<th>Dosage</th>
+<th>M</th>
+<th>A</th>
+<th>E</th>
+<th>N</th>
+<th>Dur</th>
+<th>Remarks</th>
+</tr></thead><tbody>
+</tbody></table>
+</th>
+</td>
+</tr>
+</table>
+</div>
+<!------------------------------ Current Medication end---------------------------------------- -->
+
+
+
+<!------------------------------ Systemic Exam-MENU start-------------------------------------- -->
+<div id="syst-dis" style="display:none">
+
+<!------------------------------ Systemic Exam-dis1 start-------------------------------------- -->
+
+<span class="sys_menu">
+
+<table >
+<tr><td><div class="sys_btn blue" id="0">General Exam</div></td></tr>
+<tr><td><div class="sys_btn blue" id="1">Cardiovascular System</div></td></tr>
+<tr><td><div class="sys_btn blue" id="2">Respiratory System</div></td></tr>
+<tr><td><div class="sys_btn blue" id="3">Abdomen</div></td></tr>
+<tr><td><div class="sys_btn blue" id="4">Eye</div></td></tr>
+<tr><td><div class="sys_btn blue" id="5">ENT</div></td></tr>
+<tr><td><div class="sys_btn blue" id="6">Musculo Skeletal System</div></td></tr>
+<tr><td><div class="sys_btn blue" id="7">Skin System</div></td></tr>
+<tr><td><div class="sys_btn blue" id="8">Central Nervous System</div></td></tr>
+<tr><td><div class="sys_btn blue" id="9">Gynaecological Examination</div></td></tr>
+<tr><td><div class="sys_btn blue" id="10">Injuries</div></td></tr>
+<tr><td><div class="sys_btn blue" id="11">Burns</div></td></tr>
+</table>
+
+</span>
+<!------------------------------ Systemic Exam-MENU end---------------------------------------- -->
+
+<!------------------------------ Systemic Exam-body start-------------------------------------- -->
+<span class="sys_body" style="display:none" id="sys-bdy">
+
+
+<!------------------------------ Cardiovascular System start----------------------------------- -->
+
+<div id="genex-sys" style="display:none">
+<div class="ui-state-default">General Examination</div>
+<!------------------------------ sys_inleft start---------------------------------------------- -->
+<div class="sys_inleft sys_inleft-min">
+<span class="by2l">
+
+<table >
+<tr class="ui-state-default"><td  width="50%">Vitals</td></tr>
+<tr><td width="50%">Temperature</td></tr>
+<tr><td><input  type="text" id="PreTemp" name="PreTemp" /></td></tr>
+<tr><td>Pulse</td></tr>
+<tr><td><input type="text" id="PrePulse" name="PrePulse" /></td></tr>
+<tr><td>Blood Pressure</td></tr>
+<tr><td><input type="text"  name="PreBP"  id="PreBP" /></td></tr>
+<tr class="ui-state-default"><td  width="50%">Build</td></tr>
+<tr><td width="50%">General</td></tr>
+<tr><td><input type="text" id="PreBuildGen" name="PreBuildGen" /></td></tr>
+<tr><td>Weight in Kgs</td></tr>
+<tr><td><input type="text" id="PreWt" name="PreWt" /></td></tr>
+<tr><td>BMI</td></tr>
+<tr><td><input type="text" id="PreBMI" name="PreBMI" /></td></tr>
+</table>
+
+</span>
+<span class="by2r">
+
+<table >
+<tr class="ui-state-default"><td  width="50%">Appearance</td></tr>
+<tr><td width="50%">Pallor</td></tr>
+<tr><td><input type="text" id="PrePal" name="PrePal"  /></td></tr>
+<tr><td>Icterus</td></tr>
+<tr><td><input type="text" id="PreIct"     name="PreIct" /></td></tr>
+<tr><td>Cyanosis</td></tr>
+<tr><td><input type="text" id="PreCyn"     name="PreCyn" /></td></tr>
+<tr><td width="50%">Oedema</td></tr>
+<tr><td><input type="text" id="PreOed"     name="PreOed" /></td></tr>
+<tr><td>Clubbing</td></tr>
+<tr><td><input type="text" id="PreClub"    name="PreClub" /></td></tr>
+<tr class="ui-state-default"><td  width="50%">Thyroid</td></tr>
+<tr><td width="50%">Normal</td></tr>
+<tr><td><input type="text" id="PreThyNor"     name="PreThyNor" /></td></tr>
+<tr><td>Abnormality</td></tr>
+<tr><td><input type="text"  id="PreThyAb"     name="PreThyAb" /></td></tr>
+
+</table>
+
+</span>
+</div>
+<!------------------------------ sys_inleft end----------------------------------------------- -->
+<!------------------------------ sys_inright start-------------------------------------------- -->
+<div class="sys_inright">
+<span class="by2l"> <!-- by2l start-->
+<table >
+<tr class="ui-state-default"><td  width="50%">Oral Examination</td></tr>
+<tr><td width="50%">Hygiene</td></tr>
+<tr><td><input type="text"  id="PreOralHyg" name="PreOralHyg" /></td></tr>
+<tr><td>Tongue</td></tr>
+<tr><td><input type="text" id="PreOralTon"     name="PreOralTon" /></td></tr>
+<tr><td>Teeth</td></tr>
+<tr><td><input type="text" id="PreOralTeeth"     name="PreOralTeeth" /></td></tr>
+<tr><td>Gums</td></tr>
+<tr><td><input type="text" id="PreOralGum"     name="PreOralGum"  /></td></tr>
+<tr><td>Tonsils</td></tr>
+<tr><td><input type="text" id="PreOralTons"     name="PreOralTons" /></td></tr>
+<tr><td>Buccal Mucossa </td></tr>
+<tr><td><input type="text" id="PreOralMuc" name="PreOralMuc" /></td></tr>
+<tr><td>Lips </td></tr>
+<tr><td><input type="text" id="PreOralLip"     name="PreOralLip" /></td></tr>
+</table>
+</span>  <!-- by2l end-->
+
+<span class="by2r">  <!-- by2r start-->
+<table >
+
+<tr class="ui-state-default"><td width="50%">Nail</td></tr>
+<tr><td>Colour</td></tr>
+<tr><td><input type="text" id="PreNailCol"     name="PreNailCol" /></td></tr>
+<tr><td>Appearance</td></tr>
+<tr><td><input type="text" id="PreNailApp"     name="PreNailApp" /></td></tr>
+<tr><td>Additional</td></tr>
+<tr><td><input type="text" id="PreNailAdd"     name="PreNailAdd" /></td></tr>
+
+<tr class="ui-state-default"><td >Lymph</td></tr>
+<tr><td>Normal </td></tr>
+<tr><td><input type="text" id="PreLymNor"     name="PreLymNor" /></td></tr>
+<tr><td>Abnormality </td></tr>
+<tr><td><input type="text" id="PreLymAb"     name="PreLymAb" /></td></tr>
+
+<tr class="ui-state-default"><td >Notes</td></tr>
+<tr><td><textarea id="PreGENotes" name="PreGENotes"  ></textarea></td></tr>
+<tr><td><button STYLE="font-size:80%;" id="AdGenExam">Update</button></td></tr>
+</table>
+</span> <!-- by2r end-->
+</div>
+<!------------------------------ sys_inright end----------------------------------------------- -->
+</div>
+
+<div id="card-sys" style="display:none">
+
+<div class="ui-state-default">Cardiovascular System</div>
+<!------------------------------ sys_inleft start---------------------------------------------- -->
+<div class="sys_inleft sys_inleft-min">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=2>Pulse</td></tr>
+<tr><td width="60%">Rate</td> <td><input type="text" name="cardioPulRate" id="cardioPulRate" /></td></tr>
+<tr><td>Rhythm</td> <td><input type="text" name="cardioPulRhy" id="cardioPulRhy" /></td></tr>
+<tr><td>Volume</td> <td><input type="text" name="cardioPulVol" id="cardioPulVol" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Peripheral Pulsations</td></tr>
+<tr><td>Rate</td> <td><input type="text" name="cardioPPNor" id="cardioPPNor" /></td></tr>
+<tr><td>Rhythm</td> <td><input type="text"  name="cardioPPAb" id="cardioPPAb" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Blood Pressure</td></tr>
+<tr><td>Systolic</td> <td><input type="text" name="cardioBPSys" id="cardioBPSys" /></td></tr>
+<tr><td>Distolic</td> <td><input type="text" name="cardioBPDis" id="cardioBPDis" /></td></tr>
+</table>
+</div>
+<!------------------------------ sys_inleft end----------------------------------------------- -->
+<!------------------------------ sys_inright start-------------------------------------------- -->
+<div class="sys_inright">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=2>Heart</td></tr>
+<tr><td width="60%">Apical Impulse</td> <td><input type="text"  name="cardioHrtAI" id="cardioHrtAI" /></td></tr>
+<tr><td width="50%">Rate</td> <td><input type="text" name="cardioHrtRate" id="cardioHrtRate" /></td></tr>
+<tr><td width="50%">Rhythm</td> <td><input type="text" name="cardioHrtRhy" id="cardioHrtRhy" /></td></tr>
+<tr><td width="50%">S1/S2</td> <td><input type="text"  name="cardioHrtS" id="cardioHrtS" /></td></tr>
+<tr><td width="50%">Murmur</td> <td><input type="text" name="cardioHrtMur" id="cardioHrtMur" /></td></tr>
+<tr><td width="50%">Additional Sounds</td> <td><input type="text" name="cardioHrtAdd" id="cardioHrtAdd" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Notes</td></tr>
+<tr><td width="50%">Notes</td> <td><textarea name="cardioNotes" id="cardioNotes" ></textarea></td></tr>
+<tr><td></td>
+<td ><button STYLE="font-size:80%;" id="AdCard">Update</button></td></tr>
+</table>
+</div>
+<!------------------------------ sys_inright end----------------------------------------------- -->
+
+</div>
+<!------------------------------ Respiratory System start-------------------------------------- -->
+<div id="Res-sys" style="display:none">
+<div class="ui-state-default">Respiratory System</div>
+<!------------------------------ sys_inleft start----------------------------------------------- -->
+<div class="sys_inleft">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=2>Chest</td></tr>
+<tr><td width="60%">Respiratory Rate</td> <td><input type="text" name="respChstRate" id="respChstRate" /></td></tr>
+<tr><td >Shape</td> <td><input type="text" name="respChstShape" id="respChstShape" /></td></tr>
+<tr><td >Symmetry</td> <td><input type="text" name="respChstSym" id="respChstSym" /></td></tr>
+<tr><td >Movements</td> <td><input type="text" name="respChstMov" id="respChstMov" /></td></tr>
+<tr><td >Trachea</td> <td><input type="text" name="respChstTr" id="respChstTr" /></td></tr>
+
+<tr class="ui-state-default"><td colspan=2>Percussion</td></tr>
+<tr><td >Resonance</td> <td><input type="text" name="respPerRes" id="respPerRes" /></td></tr>
+<tr><td >Abnormality</td> <td><input type="text" name="respPerAb" id="respPerAb" /></td></tr>
+</table>
+</div>
+<!------------------------------ sys_inleft end----------------------------------------------- -->
+<!------------------------------ sys_inright start-------------------------------------------- -->
+<div class="sys_inright">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=2>Palpations</td></tr>
+<tr><td width="60%">Crepitus</td> <td><input type="text" name="respPalCr" id="respPalCr" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Auscultation</td></tr>
+<tr><td >Breathe Sounds</td> <td><input type="text" name="respAusBS" id="respAusBS" /></td></tr>
+<tr><td >Adventitious Sounds</td> <td><input type="text" name="respAusAS" id="respAusAS" /></td></tr>
+<tr><td >Location of Abnormality</td> <td><input type="text" name="respAusLA" id="respAusLA" /></td></tr>
+
+<tr class="ui-state-default"><td colspan=2>Notes</td></tr>
+<tr><td >Notes</td> <td><textarea name="respNotes" id="respNotes" ></textarea></td></tr>
+<tr><td></td>
+<td ><button STYLE="font-size:80%;" id="AdRespir">Update</button></td></tr>
+</table>
+</div>
+<!------------------------------ sys_inright end----------------------------------------------- -->
+</div>
+<!------------------------------ Respiratory System end---------------------------------------- -->
+
+<!------------------------------ Abdomen start------------------------------------------------- -->
+<div id="Abdo-sys" style="display:none">
+<div class="ui-state-default">Abdomen</div>
+<!------------------------------ sys_inleft start---------------------------------------------- -->
+<div class="sys_inleft">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=2>Examination</td></tr>
+<tr><td width="60%">Shape</td> <td><input type="text" name="absExSh" id="absExSh" /></td></tr>
+<tr><td >Symmetry</td> <td><input type="text" name="absExSym" id="absExSym" /></td></tr>
+<tr><td >Movements with resp.</td> <td><input type="text" name="absExMov" id="absExMov" /></td></tr>
+<tr><td >Abnormality</td> <td><input type="text" name="absExAb" id="absExAb" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Palpations</td></tr>
+<tr><td >Rigidity</td> <td><input type="text" name="absPalRig"  id="absPalRig" /></td></tr>
+<tr><td >Tenderness</td> <td><input type="text" name="absPalTen" id="absPalTen" /></td></tr>
+<tr><td >Spleen</td> <td><input type="text" name="absPalSpl" id="absPalSpl"  /></td></tr>
+<tr><td >Liver</td> <td><input type="text" name="absPalLiv" id="absPalLiv"  /></td></tr>
+<tr><td >Abnormality</td> <td><input type="text" name="absPalAb" id="absPalAb" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Percussion</td></tr>
+<tr><td >Resonance</td> <td><input type="text" name="absPerRes" id="absPerRes" /></td></tr>
+<tr><td >Abnormality</td> <td><input type="text" name="absPerAb" id="absPerAb" /></td></tr>
+</table>
+</div>
+<!------------------------------ sys_inleft end----------------------------------------------- -->
+<!------------------------------ sys_inright start-------------------------------------------- -->
+<div class="sys_inright">
+<table width="100%">
+
+<tr class="ui-state-default"><td colspan=2>Auscultation</td></tr>
+<tr><td width="60%">Bowel Sounds</td> <td><input type="text" name="absAusBS" id="absAusBS" /></td></tr>
+<tr><td >Bruit</td> <td><input type="text"  name="absAusBr" id="absAusBr" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Genitourinary system</td></tr>
+<tr><td >Inguinal orifices</td> <td><input type="text" name="absGSIO" id="absGSIO" /></td></tr>
+<tr><td >Inguinal canal</td> <td><input type="text" name="absGSIC" id="absGSIC" /></td></tr>
+<tr><td >Femoral canal</td> <td><input type="text" name="absGSFC" id="absGSFC" /></td></tr>
+
+<tr class="ui-state-default"><td colspan=2>Notes</td></tr>
+<tr><td >Notes</td> <td><textarea name="absNotes" id="absNotes" ></textarea></td></tr>
+<tr><td></td>
+<td ><button STYLE="font-size:80%;" id="AdAbdomen">Update</button></td></tr>
+</table>
+</div>
+<!------------------------------ sys_inright end------------------------------------------ -->
+</div>
+<!------------------------------ Abdomen end---------------------------------------------- -->
+<!------------------------------ eye start----------------------------------------------- -->
+<div id="Eye-sys" style="display:none">
+
+<div class="ui-state-default">Eye</div>
+<!------------------------------ sys_inleft start----------------------------------------- -->
+<div class="sys_inleft">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=3>Physical Examination</td></tr>
+<tr  class="ui-state-default"><td >Name</td> <td>Right</td>
+<td>Left</td></tr>
+<tr><td width="50">Cornea</td> <td width="25%"><input type="text"  class="inp" name="peCorL" id="peCorL" /></td>
+<td width="25%"><input type="text"  class="inp"  name="peCorR" id="peCorR" /></td></tr>
+<tr><td width="0%">Conjuctiva</td>  <td width="25%"><input type="text" name="peConL" id="peConL"  class="inp"/></td>
+<td width="25%"><input type="text" name="peConR" id="peConR" class="inp"/></td></tr>
+<tr><td width="0%">Sciera</td> <td width="25%"><input type="text" name="peScL" id="peScL" class="inp"/></td>
+<td width="25%"><input type="text" name="peScR"  id="peScR" class="inp"/></td></tr>
+<tr><td width="0%">Anterior chamber</td>  <td width="25%"><input type="text" name="peACL" id="peACL" class="inp"/></td>
+<td width="25%"><input type="text" name="peACR" id="peACR" class="inp"/></td></tr>
+<tr><td width="0%">Iris/pupil</td> <td width="25%"><input type="text"  name="peIPL" id="peIPL"  class="inp"/></td>
+<td width="25%"><input type="text" name="peIPR" id="peIPR" class="inp"/></td></tr>
+<tr><td width="0%">Lens</td>  <td width="25%"><input type="text" name="peLenL" id="peLenL" class="inp"/></td>
+<td width="25%"><input type="text" name="peLenR" id="peLenR" class="inp"/></td></tr>
+<tr class="ui-state-default"><td colspan=3>Ophthalmoscopy</td></tr>
+<tr  class="ui-state-default"><td >Name</td> <td>Right</td>
+<td>Left</td></tr>
+<tr><td width="0%">Retina</td>  <td width="25%"><input type="text" name="opRetL" id="opRetL" class="inp"/></td>
+<td width="25%"><input type="text" name="opRetR" id="opRetR" class="inp"/></td></tr>
+<tr><td width="0%">Optic Disc</td>  <td width="25%"><input type="text" name="opODL" id="opODL" class="inp"/></td>
+<td width="25%"><input type="text"  class="inp" name="opODR" id="opODR" /></td></tr>
+
+<tr><td width="0%">Blood Vessels</td>  <td width="25%"><input type="text"  name="opBVL" id="opBVL" class="inp"/></td>
+<td width="25%"><input type="text"  class="inp"  name="opBVR" id="opBVR"/></td></tr>
+<tr><td width="0%">Vitreous</td>  <td width="25%"><input type="text" name="opVitL" id="opVitL"  class="inp"/></td>
+<td width="25%"><input type="text" name="opVitR" id="opVitR" class="inp"/></td></tr>
+</table>
+</div>
+<!------------------------------ sys_inleft end----------------------------------------------- -->
+<!------------------------------ sys_inright start-------------------------------------------- -->
+<div class="sys_inright">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=3>Functional Assessment</td></tr>
+<tr  class="ui-state-default"><td >Name</td> <td>Right</td>
+<td>Left</td></tr>
+<tr><td width="50">Colour Vision</td> <td width="25%"><input type="text" name="faCVL" id="faCVL" class="inp"/></td>
+<td width="25%"><input type="text"  class="inp" name="faCVR" id="faCVR"/></td></tr>
+<tr><td width="0%">Perimetry</td>  <td width="25%"><input type="text" name="faPerL" id="faPerL"  class="inp"/></td>
+<td width="25%"><input type="text"  name="faPerR" id="faPerR" class="inp"/></td></tr>
+<tr><td width="0%">Ocular Pressure</td> <td width="25%"><input type="text" name="faOPL" id="faOPL" class="inp"/></td>
+<td width="25%"><input type="text"  class="inp" name="faOPR" id="faOPR"/></td></tr>
+<tr  class="ui-state-default"><td >Visual Acuity</td> <td>Right</td>
+<td>Left</td></tr>
+<tr><td width="0%">Distant Vision</td>  <td width="25%"><input type="text"  name="faDVL" id="faDVL" class="inp"/></td>
+<td width="25%"><input type="text" name="faDVR" id="faDVR"  class="inp"/></td></tr>
+<tr><td width="0%">Near Vision</td> <td width="25%"><input type="text" name="faNVL" id="faNVL" class="inp"/></td>
+<td width="25%"><input type="text"  class="inp"  name="faNVR" id="faNVR"/></td></tr>
+<tr><td width="0%">Power of Glasses</td>  <td width="25%"><input type="text" name="faPGL" id="faPGL"  class="inp"/></td>
+<td width="25%"><input type="text" name="faPGR" id="faPGR" class="inp"/></td></tr>
+<tr><td width="0%">Contact Lens</td>  <td width="25%"><input type="text" name="faCLL" id="faCLL" class="inp"/></td>
+<td width="25%"><input type="text"  class="inp" name="faCLR" id="faCLR"/></td></tr>
+<tr  class="ui-state-default"><td colspan=3>Notes</td> </tr>
+</table>
+<table>
+<tr><td width="0%" >Notes</td>  <td width="25%"><textarea name="eyeNotes" id="eyeNotes" ></textarea></td></tr>
+<tr><td></td>
+<td ><button STYLE="font-size:80%;"  id="AdEye" >Update</button></td></tr>
+
+</table>
+</div>
+<!------------------------------ sys_inright end--------------------------------------- -->
+
+</div>
+<!------------------------------ eye end----------------------------------------------- -->
+<!------------------------------ ent start--------------------------------------------- -->
+<div id="ENT-sys" style="display:none">
+<div class="ui-state-default">ENT</div>
+<!------------------------------ sys_inleft start--------------------------------------- -->
+
+<div class="sys_inleft">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=3>Ear</td></tr>
+<tr  class="ui-state-default"><td >Name</td> <td>Right</td>
+<td>Left</td></tr>
+<tr><td width="50">External ear</td> <td width="25%"><input type="text" name="eExL" id="eExL" class="inp"/></td>
+<td width="25%"><input type="text" name="eExR" id="eExR" class="inp"/></td></tr>
+<tr><td width="0%">Auditory canal	</td>  <td width="25%"><input type="text" name="eACL" id="eACL" class="inp"/></td>
+<td width="25%"><input type="text"  name="eACR" id="eACR" class="inp"/></td></tr>
+<tr><td width="0%">Eardrum	</td> <td width="25%"><input type="text"  name="eEdL" id="eEdL" class="inp"/></td>
+<td width="25%"><input type="text"  class="inp" name="eEdR" id="eEdR"/></td></tr>
+<tr><td width="0%">Rinne's test</td>  <td width="25%"><input type="text"  name="eRTL" id="eRTL" class="inp"/></td>
+<td width="25%"><input type="text"  name="eRTR" id="eRTR" class="inp"/></td></tr>
+<tr><td width="0%">Weber's test</td> <td width="25%"><input type="text"  name="eWTL" id="eWTL" class="inp"/></td>
+<td width="25%"><input type="text" name="eWTR" id="eWTR" class="inp"/></td></tr>
+<tr><td width="0%">Conversational hearing	</td>  <td width="25%"><input type="text"  name="eCHL" id="eCHL" class="inp"/></td>
+<td width="25%"><input type="text"  name="eCHR" id="eCHR" class="inp"/></td></tr>
+<tr><td width="0%">Audiometry</td>  <td width="25%"><input type="text"  name="eAuL" id="eAuL"  class="inp"/></td>
+<td width="25%"><input type="text"  class="inp" name="eAuR" id="eAuR"></td></tr>
+<tr class="ui-state-default"><td colspan=3>Nose</td></tr>
+<tr  class="ui-state-default"><td >Name</td> <td>Right</td>
+<td>Left</td></tr>
+<tr><td width="0%">External appearance</td>  <td width="25%"><input type="text"  class="inp" name="nsEAL" id="nsEAL" /></td>
+<td width="25%"><input type="text"  class="inp" name="nsEAR" id="nsEAR" /></td></tr>
+<tr><td width="0%">Anterior nares</td>  <td width="25%"><input type="text" name="nsANL" id="nsANL" class="inp"/></td>
+<td width="25%"><input type="text"  class="inp" name="nsANR" id="nsANR" /></td></tr>
+
+<tr><td width="0%">Septum</td>  <td width="25%"><input type="text"  name="nsSeL" id="nsSeL"  class="inp"/></td>
+<td width="25%"><input type="text"  name="nsSeR" id="nsSeR"  class="inp"/></td></tr>
+<tr><td width="0%">Turbinates</td>  <td width="25%"><input type="text"  name="nsTbL" id="nsTbL"  class="inp"/></td>
+<td width="25%"><input type="text"  class="inp"  name="nsTbR" id="nsTbR" /></td></tr>
+<tr><td width="0%">Nasal mucosa</td>  <td width="25%"><input type="text" name="nsNML"  id="nsNML" class="inp"/></td>
+<td width="25%"><input type="text" name="nsNMR" id="nsNMR" class="inp"/></td></tr>
+<tr><td width="0%">Nasopharynx</td>  <td width="25%"><input type="text" name="nsNpL" id="nsNpL" class="inp"/></td>
+<td width="25%"><input type="text"  class="inp"  name="nsNpR" id="nsNpR"/></td></tr>
+<tr><td width="0%">Nasal airway</td>  <td width="25%"><input type="text"  name="nsNAL"  id="nsNAL" class="inp"   /></td>
+<td width="25%"><input type="text" name="nsNAR" id="nsNAR" class="inp"/></td></tr>
+</table>
+</div>
+<!------------------------------ sys_inleft end-------------------------------------------------- -->
+<!------------------------------ sys_inright start----------------------------------------------- -->
+<div class="sys_inright">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=3>Throat</td></tr>
+<tr  class="ui-state-default"><td >Name</td> <td>Right</td>
+<td>Left</td></tr>
+<tr><td width="0%">Base of tongue</td>  <td width="25%"><input type="text"  name="thBTL" id="thBTL" class="inp"/></td>
+<td width="25%"><input type="text"  name="thBTR" id="thBTR" class="inp"/></td></tr>
+<tr><td width="0%">Epiglottis</td>  <td width="25%"><input type="text"  name="thEpL" id="thEpL" class="inp"/></td>
+<td width="25%"><input type="text"  name="thEpR" id="thEpR" class="inp"/></td></tr>
+
+<tr><td width="0%">Glossoepiglottic fold</td>  <td width="25%"><input type="text"  name="thGFL" id="thGFL" class="inp"/></td>
+<td width="25%"><input type="text" name="thGFR" id="thGFR" class="inp"/></td></tr>
+<tr><td width="0%">Vallecula</td>  <td width="25%"><input type="text" name="thVaL" id="thVaL" class="inp"/></td>
+<td width="25%"><input type="text"  class="inp" name="thVaR" id="thVaR" /></td></tr>
+<tr><td width="0%">False vocal cords</td>  <td width="25%"><input type="text"  name="thFVL" id="thFVL" class="inp"/></td>
+<td width="25%"><input type="text"  class="inp" name="thFVR" id="thFVR" /></td></tr>
+<tr><td width="0%">True vocal cords</td>  <td width="25%"><input type="text"   name="thTVL" id="thTVL" class="inp"/></td>
+<td width="25%"><input type="text"  name="thTVR" id="thTVR" class="inp"/></td></tr>
+<tr><td width="0%">Pyriform fossa</td>  <td width="25%"><input type="text"  name="thPFL" id="thPFL" class="inp"/></td>
+<td width="25%"><input type="text"  class="inp" name="thPFR" id="thPFR" /></td></tr>
+</table>
+<table>
+<tr  class="ui-state-default"><td colspan=3>Notes</td> </tr>
+<tr><td width="0%">Notes</td>  <td width="25%"><textarea name="entNotes"  id="entNotes"  ></textarea></td></tr>
+<tr><td></td>
+<td ><button STYLE="font-size:80%;" id="AdENT" >Update</button></td></tr>
+
+
+</table>
+</div>
+<!------------------------------ sys_inright end----------------------------------------------- -->
+</div>
+<!------------------------------ ent end------------------------------------------------------- -->
+<!------------------------------ Musculo Skeletal System start--------------------------------- -->
+<div id="Musc-sys" style="display:none">
+<div class="ui-state-default">Musculo Skeletal System</div>
+<!------------------------------ sys_inleft start----------------------------------------------- -->
+<div class="sys_inleft">
+<table width="100%">
+
+<tr class="ui-state-default"><td colspan=2 width="60%">Upper Limb</td>
+<td colspan=2 class="ui-state-default" >Lower Limb</td></tr>
+
+<tr><td>Shoulder</td>  <td><input type="text" name="mssULSh" id="mssULSh" class="inp"/></td>
+<td>Hip</td> <td><input type="text" name="mssLLHp" id="mssLLHp"  class="inp"/></td></tr>
+<tr><td>Elbow</td>  <td><input type="text" name="mssULEl" id="mssULEl" class="inp"/></td>
+<td>Knee</td> <td><input type="text" name="mssLLkn" id="mssLLkn" class="inp"/></td></tr>
+<tr><td>Wrist</td>  <td><input type="text" name="mssULWr" id="mssULWr" class="inp" /></td>
+<td>Ankle</td> <td><input type="text" name="mssLLAn" id="mssLLAn" class="inp"/></td></tr>
+<tr><td>Digits</td>  <td><input type="text"  name="mssULDg" id="mssULDg" class="inp"/></td>
+<td>Digits</td> <td><input type="text" name="mssLLDg" id="mssLLDg" class="inp"/></td></tr>
+<tr><td>Arm</td>  <td><input type="text"  name="mssULArm" id="mssULArm" class="inp"/></td>
+<td>Thigh</td> <td><input type="text"  name="mssLLTh" id="mssLLTh"  class="inp"/></td></tr>
+<tr><td>Forehand</td>  <td><input type="text"  name="mssULFh" id="mssULFh" class="inp"/></td>
+<td>Leg</td> <td><input type="text"  class="inp"  name="mssLLLg" id="mssLLLg"/></td></tr>
+<tr><td>Hand</td>  <td><input type="text"  name="mssULHnd" id="mssULHnd" class="inp"/></td>
+<td>Foot</td> <td><input type="text" name="mssLLFt" id="mssLLFt" class="inp"/></td></tr>
+</table>
+
+</div>
+<!------------------------------ sys_inleft end----------------------------------------------- -->
+<!------------------------------ sys_inright start-------------------------------------------- -->
+<div class="sys_inright">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=2>Spine</td></tr>
+<tr><td width="60%">Cervical</td> <td><input type="text" name="mssSpCv" id="mssSpCv" /></td></tr>
+<tr><td >Thoracic</td> <td><input type="text" name="mssSpTc" id="mssSpTc" /></td></tr>
+<tr><td >Lumbar</td> <td><input type="text"  name="mssSpLm" id="mssSpLm" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Others</td></tr>
+<tr><td >Tempero mandibular</td> <td><input type="text" name="mssOthTM" id="mssOthTM" /></td></tr>
+<tr><td >Clavicle</td> <td><input type="text" name="mssOthCl" id="mssOthCl" /></td></tr>
+<tr><td >Sternum</td> <td><input type="text" name="mssOthSt" id="mssOthSt" /></td></tr>
+<tr><td >Ribs</td> <td><input type="text"  name="mssOthRb" id="mssOthRb" /></td></tr>
+<tr><td >Scapula</td> <td><input type="text" name="mssOthSc" id="mssOthSc" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Notes</td></tr>
+<tr><td >Notes</td> <td><textarea name="mssNotes" id="mssNotes" ></textarea></td></tr>
+<tr><td></td>
+<td ><button STYLE="font-size:80%;" id="AdMusculo">Update</button></td></tr>
+
+
+</table>
+</div>
+<!------------------------------ sys_inright end---------------------------------------------- -->
+
+</div>
+<!------------------------------ Musculo Skeletal System end------------------------------------- -->
+
+<!------------------------------ Skin System start----------------------------------------------- -->
+<div id="Skin-sys" style="display:none">
+<div class="ui-state-default">Skin System</div>
+<!------------------------------ sys_inright start-------------------------------------------- -->
+<div class="sys_inleft">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=2>Skin</td></tr>
+<tr><td width="60%">Skin Colour</td> <td><input type="text" name="sknSC" id="sknSC" /></td></tr>
+<tr><td >Temperature</td> <td><input type="text" name="sknTem"  id="sknTem" /></td></tr>
+<tr><td >Moisture</td> <td><input type="text" name="sknMois" id="sknMois" /></td></tr>
+<tr><td >Mobility/turgor	</td> <td><input type="text" name="sknMT" id="sknMT" /></td></tr>
+<tr><td >Hair</td> <td><input type="text" name="sknHr" id="sknHr" /></td></tr>
+<tr><td >Nails</td> <td><input type="text" name="sknNls" id="sknNls" /></td></tr>
+<tr><td >Mucosa</td> <td><input type="text" name="sknMcs" id="sknMcs" /></td></tr>
+<tr><td >Abnormality</td> <td><input type="text" name="sknAb" id="sknAb"  /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Notes</td></tr>
+<tr><td >Notes</td> <td><textarea name= "msNotes" id="msNotes" ></textarea></td></tr>
+<tr><td></td>
+<td ><button STYLE="font-size:80%;" id="AdSkin">Update</button></td></tr>
+</table>
+</div>
+<!------------------------------ sys_inright end---------------------------------------------- -->
+</div>
+<!------------------------------ Skin System end----------------------------------------------- -->
+
+<!------------------------------ Central Nervous System start---------------------------------- -->
+<div id="Cent-sys" style="display:none">
+<div class="ui-state-default">Central Nervous System</div>
+<!------------------------------ sys_inleft start-------------------------------------------- -->
+<div class="sys_inleft">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=2>Higher Functions</td></tr>
+<tr><td width="60%">Speech</td> <td><input type="text" name="cnsHFSp" id="cnsHFSp" /></td></tr>
+<tr><td >Memory</td> <td><input type="text" name="cnsHFMem" id="cnsHFMem" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Sensory System</td></tr>
+<tr><td >Touch</td> <td><input type="text" name="cnsSSTch" id="cnsSSTch" /></td></tr>
+<tr><td >Pressure</td> <td><input type="text" name="cnsSSPrs" id="cnsSSPrs" /></td></tr>
+<tr><td >Pain</td> <td><input type="text" name="cnsSSPn" id="cnsSSPn" /></td></tr>
+<tr><td >Thermal</td> <td><input type="text" name="cnsSSTh" id="cnsSSTh" /></td></tr>
+<tr><td >Graphaesthesia</td> <td><input type="text" name="cnsSSGr" id="cnsSSGr" /></td></tr>
+<tr><td >Stereognosis</td> <td><input type="text" name="cnsSSSt" id="cnsSSSt" /></td></tr>
+<tr><td >Kinaesthesia</td> <td><input type="text" name="cnsSSKin" id="cnsSSKin" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Cranial Nerves</td></tr>
+<tr><td >CN I -XII</td> <td><input type="text"  name="cnsCN" id="cnsCN" /></td></tr>
+<tr><td >Abnormality</td> <td><input type="text" name="cnsCNAb"  id="cnsCNAb" /></td></tr>
+</table>
+</div>
+<!------------------------------ sys_inleft end--------------------------------------- -->
+<!------------------------------ sys_inright start--------------------------------------- -->
+<div class="sys_inright">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=2>Motor Functions</td></tr>
+<tr><td width="60%">Posture</td> <td><input type="text" name="cnsMFPos" id="cnsMFPos" /></td></tr>
+<tr><td >Gait</td> <td><input type="text" name="cnsMFGt" id="cnsMFGt" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Sensory System</td></tr>
+<tr><td >Reflexes</td> <td><input type="text" name="cnsMFRef" id="cnsMFRef" /></td></tr>
+<tr><td >Spine</td> <td><input type="text" name="cnsMFSp" id="cnsMFSp" /></td></tr>
+<tr><td >Muscle tone</td> <td><input type="text" name="cnsMFMT" id="cnsMFMT" /></td></tr>
+<tr><td >Muscle Strength</td> <td><input type="text"  name="cnsMFMS" id="cnsMFMS" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Psychological assessment</td></tr>
+<tr><td >Thought process</td> <td><input type="text" name="cnsPATP" id="cnsPATP" /></td></tr>
+<tr><td >Perception</td> <td><input type="text" name="cnsPAPer" id="cnsPAPer" /></td></tr>
+<tr><td >Thought content</td> <td><input type="text" name="cnsPATC" id="cnsPATC" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Notes</td></tr>
+<tr><td >Notes</td> <td><textarea name="cnsNotes"  id="cnsNotes" ></textarea></td></tr>
+<tr><td></td>
+<td ><button STYLE="font-size:80%;" id="AdNerv">Update</button></td></tr>
+</table>
+</div>
+<!------------------------------ sys_inright end--------------------------------------- -->
+
+</div>
+<!------------------------------ Central Nervous System start-------------------------- -->
+<!------------------------------ Gynaecological start---------------------------------- -->
+<div id="Gyna-sys" style="display:none">
+<div class="ui-state-default">Gynaecological Examination</div>
+<!------------------------------ sys_inleft start-------------------------------------- -->
+<div class="sys_inleft">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=2>Abdomen</td></tr>
+<tr><td width="60%">Shape</td> <td><input type="text" name="geAbsSh" id="geAbsSh" /></td></tr>
+<tr><td width="60%">Uterus</td> <td><input type="text"  name="geAbsUt"  id="geAbsUt" /></td></tr>
+<tr><td >Abnormality</td> <td><input type="text"  name="geAbsAb"  id="geAbsAb" /></td></tr>
+<tr class="ui-state-default"><td colspan=2>Pelvis</td></tr>
+<tr><td >Vulva</td> <td><input type="text" name="gePelVu" id="gePelVu" /></td></tr>
+<tr><td >Vagina</td> <td><input type="text" name="gePelVa" id="gePelVa" /></td></tr>
+<tr><td >Cervix</td> <td><input type="text"  name="gePelCe" id="gePelCe"  /></td></tr>
+<tr><td >Uterus</td> <td><input type="text" name="gePelUt" id="gePelUt" /></td></tr>
+<tr><td >Adnexa</td> <td><input type="text" name="gePelAd" id="gePelAd" /></td></tr>
+<tr><td >Others</td> <td><input type="text" name="gePelOth" id="gePelOth"  /></td></tr>
+<tr><td >Abnormality</td> <td><input type="text" name="gePelAb" id="gePelAb" /></td></tr>
+</table>
+</div>
+<!------------------------------ sys_inleft end---------------------------------------- -->
+<!------------------------------ sys_inright start------------------------------------- -->
+<div class="sys_inright">
+<table width="100%">
+<tr class="ui-state-default"><td colspan=2>Breast</td></tr>
+<tr><td width="60%">Skin</td> <td><input type="text" name="geBrsSk" id="geBrsSk" /></td></tr>
+<tr><td >Shape</td> <td><input type="text" name="geBrsSh" id="geBrsSh" /></td></tr>
+<tr><td >Consistency</td> <td><input type="text"  name="geBrsCn" id="geBrsCn" /></td></tr>
+<tr><td >Nipple</td> <td><input type="text" name="geBrsNp" id="geBrsNp"  /></td></tr>
+<tr><td >Axilla</td> <td><input type="text"  name="geBrsAx" id="geBrsAx"  /></td></tr>
+<tr><td >Others</td> <td><input type="text" name="geBrsOth" id="geBrsOth"  /></td></tr>
+<tr><td >Abnormality</td> <td><input type="text" name="geBrsAb" id="geBrsAb" /></td></tr></tr>
+<tr class="ui-state-default"><td colspan=2>Notes</td></tr>
+<tr><td >Notes</td> <td><textarea name="geNotes" id="geNotes" ></textarea></td></tr>
+<tr><td></td>
+<td ><button STYLE="font-size:80%;" id="AdGynaeco">Update</button></td></tr>
+</table>
+</div>
+<!------------------------------ sys_inright end--------------------------------------- -->
+
+</div>
+<!------------------------------ Gynaecological end---------------------------------- -->
+<!------------------------------ Injuries start-------------------------------------- -->
+<div id="Inju-sys" style="display:none">
+<div class="ui-state-default">Injuries</div>
+
+<table width="auto">
+<tr>
+<td colspan="5">
+	<div id="canvas"  class="boxtxt">
+	<canvas class="roundCorners" id="newSignature" name="newSignature" style="position: relative; margin: 0; padding: 0; border: 1px solid #c4caac;"></canvas>
+	</div>
+</td>
+</tr>
+
+<tr>
+<td colspan="5"><table><td>
+<div align="left" STYLE=" background-color:red; width:25px; height:25px;" id="red"></div> </td>
+<td><div align="center" STYLE=" background-color:green; width:25px; height:25px;" id="green"></div> </td>
+<td><div align="right" STYLE=" background-color:blue; width:25px; height:25px;" id="blue"></div></td>
+<td><div align="right" STYLE=" background-color:yellow; width:25px; height:25px;" id="yellow"></div></td>
+<td><div id="slider-horizontal" style="height: 15px; width:150px;"></div></td>
+<td><div id="amount"></div></td>
+<td><button id="addText" STYLE="font-size:80%;">A</button></td>
+<td><input type="text" id="cantxt" style="display:none";/> </td>
+</table></td>
+</tr>
+<tr>
+
+<td><button type="button" STYLE="font-size:80%;" onclick="signatureSave()">Save</button>
+<td><button type="button" STYLE="font-size:80%;" onclick="signatureClear()">Clear</button><input type="hidden" id="tmpsrtsrc" /><button type="button" STYLE="font-size:80%;" onclick="cUndo()">Undo</button><button type="button" STYLE="font-size:80%;" onclick="cRedo()">Redo</button></td>
+<td><button id="takePicture" name="takePicture" STYLE="font-size:80%;" >Capture</button></td>
+<td><button onclick="selectPicture();" STYLE="font-size:80%;" >Select</button></td>
+<td><button type="button" STYLE="font-size:80%;" onclick="viewUploadedPictures1();" id="countdis">Load</button>
+<!--<button STYLE="font-size:80%;" id="canzom">+</button><button STYLE="font-size:80%;" id="canrzom">-</button>--></td>
+</tr>
+<tr>
+<td colspan="5"><div id="showimage" class="demo" style="display:none;"></div><button id="more" STYLE="font-size:80%;display:none;">More</button></td>
+</tr>
+</table>
+<div id='preview'></div>
+<span id="camera_status"></span>
+
+		<script>
+			signatureCapture();
+		</script>
+
+
+
+	<div id="candisimage" ></div>
+        <br/>
+        <div class="injfuimage">
+
+<div id="disimginj" STYLE="display:none;"> </div>
+
+	<!-- Camera -->
+	<div>
+
+  <img style="width:120px;visibility:hidden;display:;" id="camera_image" src="" />
+   </div>
+   <!-- Server pictures -->
+   <div id="server_images"></div>
+
+    <br/>
+    </div>
+
+
+
+    </div>
+<!------------------------------ Injuries end---------------------------------- -->
+<!------------------------------ Burns start----------------------------------- -->
+<div id="Burn-sys" style="display:none">
+<div class="ui-state-default">Burns</div>
+		<!---------burns start------------------ -->
+
+ <table>
+                            <tr>
+                                <td align="center" valign="top" colspan="2"><div class="ui-state-active">Burns</div></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="burnChart" src="img/burn.gif" usemap="#bodymap"/>
+                                	<map name="bodymap" >
+                                		<area   id="blhand"  href="#" alt="Back of Left Hand" shape="poly" coords="304,287, 322,297, 316,314, 303,339, 298,339, 296,342, 292,340, 286,341, 285,336, 283,333, 287,319, 282,320, 281,318, 288,303, 292,299, 300,293" ></area>
+                                		<area  id="blforearm" href="#" alt="Back of Left Forearm"  shape="poly" coords="334,222, 360,236, 322,296, 306,287, 313,269, 324,238"></area>
+                                		<area id="blarm" href="#" alt="Back of Left Arm"  shape="poly" coords="334,221, 358,235, 375,196, 375,191, 374,177, 370,160, 360,139, 353,131, 345,146, 345,180"></area>
+                                		<area id="bbody" href="#" alt="Posterior"  shape="poly" coords="353,135, 367,120, 394,105, 405,95, 414,100, 427,103, 435,101, 445,96, 455,105, 484,121, 493,126, 495,133, 489,134, 481,148, 471,168, 467,184, 464,241, 468,263, 420,268, 370,264, 376,225, 374,202, 374,179, 372,168, 363,145"></area>
+                                		<area id="brnDeg" href="#" alt=""  shape="rect" coords="182,402, 230,430" class="{fillColor:'ff0000',fillOpacity:1}"></area>
+                                		<area id="bNeck" href="#" alt="Back of Neck"  shape="poly" coords="406,95, 406,82, 414,81, 425,80, 435,81, 444,82, 444,95, 435,100, 424,102, 412,100" ></area>
+                                		<area id="bHead" href="#" alt="Back of Head"  shape="poly" coords="405,82, 405,78, 401,79, 400,78, 397,66, 396,59, 398,44, 402,37, 404,31, 412,25, 421,22, 435,22, 445,26, 452,33, 454,41, 454,60, 457,62, 457,60, 453,71, 450,79, 446,79, 446,81, 438,81, 432,80, 419,79, 411,80" ></area>
+                                		<area id="brarm" href="#" alt="Back of Right Arm"  shape="poly" coords="495,132, 483,145, 476,160, 470,175, 468,186, 468,202, 475,229, 497,226, 502,218, 498,202, 498,164, 498,145, 497,137, 495,132"></area>
+                                		<area id="brforearm" href="#" shape="poly" coords="476,230, 489,227, 497,221, 502,218, 515,250, 520,270, 525,292, 517,296, 507,300, 497,279, 487,265, 479,246"></area>
+                                		<area id="brhand" href="#" shape="poly" coords="507,300, 509,315, 515,330, 526,345, 529,342, 538,344, 543,337, 540,325, 544,325, 545,321, 539,308, 525,291, 516,296"></area>
+                                		<area id="fHead" href="#" shape="poly" coords="107,97, 100,84, 97,81, 95,70, 95,64, 98,65, 98,46, 103,36, 106,32, 115,28, 136,28, 145,32, 150,38, 153,44, 152,64, 155,66, 155,74, 148,83, 144,90, 140,97, 129,106, 118,106"></area>
+                                		<area id="fNeck" href="#" shape="poly" coords="106,95, 118,105, 129,107, 141,97, 144,109, 134,122, 128,127, 123,127, 115,123, 106,110"></area>
+                                		<area id="fbody" href="#" shape="poly" coords="144,109, 134,122, 128,127, 123,127, 115,123, 106,110, 65,129, 60,136, 67,144, 70,152, 74,165, 75,204, 79,230, 76,249, 75,269, 90,286, 110,310, 116,307, 124,308, 128,310, 139,297, 147,287, 163,267, 163,220, 167,202, 168,185, 173,163, 179,147, 188,134, 186,130"></area>
+                                		<area id="frarm" href="#" shape="poly" coords="60,136, 65,129, 60,136, 67,144, 70,152, 74,165, 75,204, 71,220, 67,229, 59,220, 48,216, 52,194, 53,157, 58,137"></area>
+                                		<area id="flarm" href="#" shape="poly" coords="188,133, 192,139, 197,157, 198,201, 200,217, 192,218, 183,222, 177,232, 171,217, 167,205, 168,181, 178,155, 183,141"></area>
+                                		<area id="frforearm" href="#" shape="poly" coords="48,216, 60,220, 66,229, 64,253, 44,294, 35,286, 30,285, 35,250"></area>
+                                		<area id="flforearm" href="#" shape="poly" coords="177,231, 186,221, 191,218, 201,218, 212,244, 223,290, 213,293, 207,297, 186,264, 179,248"></area>
+                                		<area   id="frhand"  href="#" shape="poly" coords="31,285, 43,293, 42,305, 26,340, 15,342, 11,334, 12,330, 15,316, 9,320, 9,317, 17,301, 25,294, 30,288"></area>
+                                		<area   id="flhand"  href="#" shape="poly" coords="207,298, 216,291, 223,291, 231,297, 238,302, 245,319, 241,321, 243,332, 244,339, 236,343, 226,341, 222,337, 216,323, 210,313"></area>
+                                		<area   id="fruleg"  href="#" shape="poly" coords="77,269, 90,286, 112,311, 108,317, 109,329, 113,338, 118,342, 112,423, 104,425, 89,424, 81,422, 80,398, 72,368, 68,344, 68,308, 72,281"></area>
+                                		<area   id="fgen"  href="#" shape="poly" coords="111,311, 116,308, 125,308, 129,311, 132,318, 132,325, 128,337, 123,341, 118,343, 113,338, 109,327, 109,315 "></area>
+                                		<area   id="fluleg"  href="#" shape="poly" coords="129,310, 164,269, 170,294, 169,326, 153,424, 122,423, 120,401, 118,366, 118,342, 125,340, 131,328, 132,315 "></area>
+                                		<area   id="frlleg"  href="#" shape="poly" coords="81,423, 91,425, 105,425, 111,423, 114,437, 113,466, 108,509, 109,518, 90,520, 86,500, 81,482, 80,469, 79,445  "></area>
+                                		<area   id="fllleg"  href="#" shape="poly" coords="122,423, 153,424, 156,446, 154,464, 144,520, 123,517, 119,466, 119,438"></area>
+                                		<area   id="frfoot"  href="#" shape="poly" coords="89,521, 110,517, 109,542, 112,559, 112,576, 109,582, 105,582, 102,580, 83,569, 88,544"></area>
+                                		<area   id="flfoot"  href="#" shape="poly" coords="123,517, 144,521, 143,544, 150,563, 150,571, 140,578, 124,582, 120,574, 121,535 "></area>
+                                		<area   id="blfoot"  href="#" shape="poly" coords="386,513, 394,506, 404,506, 406,508, 407,516, 409,517, 409,526, 400,547, 400,567, 397,579, 391,584, 376,574, 373,564, 379,542, 385,527 "></area>
+                                		<area   id="brfoot"  href="#" shape="poly" coords="418,507, 431,507, 436,510, 438,514, 438,539, 443,559, 443,564, 438,575, 429,583, 423,579, 423,575, 419,569, 419,543, 413,529, 413,522, 418,514"></area>
+                                		<area   id="bllleg"  href="#" shape="poly" coords="385,512, 384,501, 380,487, 376,463, 376,425, 411,425, 414,444, 413,464, 406,508, 393, 506  "></area>
+                                		<area   id="brlleg"  href="#" shape="poly" coords="416,428, 426,424, 438,425, 451,428, 451,461, 448,481, 439,515, 431,508, 418,508, 418,499, 414,469, 415,445"></area>
+                                		<area   id="brbutt"  href="#" shape="poly" coords="379,289, 374,299, 371,311, 371,323, 376,330, 388,337, 410,337, 415,332, 418,287, 406,283, 396,283, 386,284"></area>
+                                		<area   id="blbutt"  href="#" shape="poly" coords="420,286, 417,295, 415,333, 421,337, 449,337, 455,331, 460,327, 462,322, 461,307, 459,298, 456,291, 448,286, 440,283, 431,281"></area>
+                                		<area   id="bruleg"  href="#" shape="poly" coords="379,289, 374,299, 371,311, 371,323, 376,330, 388,337, 410,337, 415,332, 414,337, 412,426, 390,423, 376,425, 377,408, 372,384, 363,325, 364,296, 370,264, 418,267, 418,287, 406,283, 396,283, 386,284"></area>
+                                		<area   id="bluleg"  href="#" shape="poly" coords="420,286, 419,267, 469,265, 473,294, 473,318, 469,337, 458,372, 452,410, 451,428, 437,424, 427,424, 416,428, 414,419, 414,402, 417,399, 415,377, 415,333, 421,337, 449,337, 455,331, 460,327, 462,322, 461,307, 459,298, 456,291, 448,286, 440,283, 431,281"></area>
+                                	</map>
+                                </td>
+                                <td valign="top">
+                                    <table>
+                                        <tr>
+                                            <th class="ui-state-active" width="40%">Region</th>
+                                            <th class="ui-state-active" width="200">Burns%</th>
+                                            <th class="ui-state-active" width="200" colspan=2 style="display:none;">Front</th>
+											<th class="ui-state-active" width="200" colspan=2 style="display:none;">Back</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Head</td>
+                                            <td><input type="text" id="BrnHF" class="txtsm" size="5" /></td>
+                                            <td colspan=2  align="center"><input type="checkbox" id="BrnHFCB"   /></td>
+                                            <td colspan=2  align="center"><input type="checkbox" id="BrnHBCB"  /></td>
+                                        </tr>
+                                        <tr>
+
+                                            <td>Neck</td>
+                                            <td><input type="text" id="BrnNF" size="5" class="txtsm"/></td>
+                                            <td colspan=2  align="center"><input type="checkbox" id="BrnNFCB"  /><label for="BrnNFCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td colspan=2  align="center"><input type="checkbox" id="BrnNBCB"  /><label for="BrnNBCB" style="display:none;width:40;height:40;"> </label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Body</td>
+                                            <td><input type="text" id="BrnBF" size="5" class="txtsm" /></td>
+                                            <td colspan=2  align="center"><input type="checkbox" id="BrnBFCB"  /><label for="BrnBFCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td colspan=2  align="center"><input type="checkbox" id="BrnBBCB"  /><label for="BrnBBCB" style="display:none;width:40;height:40;"> </label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Genitals</td>
+                                            <td><input type="text" id="BrnG" size="5" class="txtsm" /></td>
+                                            <td colspan=2  align="center"><input type="checkbox" id="BrnGCB"  /><label for="BrnGCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td colspan=2  align="center"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Arm</td>
+                                            <td><input type="text" id="BrnRAF" size="5" class="txtsm"/></td>
+                                            <td><input type="checkbox" id="BrnRAFCB"  /><label for="BrnRAFCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnRABCB"  /><label for="BrnRABCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnLAFCB"  /><label for="BrnLAFCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnLABCB"  /><label for="BrnLABCB" style="display:none;width:40;height:40;"> </label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Forearm</td>
+                                            <td><input type="text" id="BrnRFAF" size="5" class="txtsm" /></td>
+                                            <td><input type="checkbox" id="BrnRFAFCB" /><label for="BrnRFAFCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnRFABCB" /><label for="BrnRFABCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnLFAFCB" /><label for="BrnLFAFCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnLFABCB" /><label for="BrnLFABCB" style="display:none;width:40;height:40;"> </label></td>
+                                        </tr>
+										<tr>
+
+                                            <td>Hand</td>
+                                            <td><input type="text" id="BrnRHnF" size="5" class="txtsm"/></td>
+                                            <td><input type="checkbox" id="BrnRHnFCB"  /><label for="BrnRHnFCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnRHnBCB"  /><label for="BrnRHnBCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnLHnFCB"  /><label for="BrnLHnFCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnLHnBCB"  /><label for="BrnLHnBCB" style="display:none;width:40;height:40;"> </label></td>
+                                        </tr>
+										<tr>
+
+                                            <td>Buttocks</td>
+                                            <td><input type="text" id="BrnRBt" size="5" class="txtsm"/></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><input type="checkbox" id="BrnRBCB" /><label for="BrnRBCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnLBCB" /><label for="BrnLBCB" style="display:none;width:40;height:40;"> </label></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Upper Leg</td>
+                                            <td><input type="text" id="BrnRUL" size="5" class="txtsm"/></td>
+                                            <td><input type="checkbox" id="BrnRULFCB" /><label for="BrnRULFCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnRULBCB" /><label for="BrnRULBCB" style="display:none;width:40;height:40;"> </label></td>
+											<td><input type="checkbox" id="BrnLULFCB" /><label for="BrnLULFCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnLULBCB" /><label for="BrnLULBCB" style="display:none;width:40;height:40;"> </label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lower Leg</td>
+                                            <td><input type="text" id="BrnRLL" size="5" class="txtsm" /></td>
+                                            <td><input type="checkbox" id="BrnRLLFCB" /><label for="BrnRLLFCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnRLLBCB" /><label for="BrnRLLBCB" style="display:none;width:40;height:40;"> </label></td>
+											<td><input type="checkbox" id="BrnLLLFCB"  /><label for="BrnLLLFCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnLLLBCB"  /><label for="BrnLLLBCB" style="display:none;width:40;height:40;"> </label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Foot</td>
+                                            <td><input type="text" id="BrnRFt" size="5" class="txtsm"/></td>
+                                            <td><input type="checkbox" id="BrnRFtFCB"  /><label for="BrnRFtFCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnRFtBCB"  /><label for="BrnRFtBCB" style="display:none;width:40;height:40;"> </label></td>
+											<td><input type="checkbox" id="BrnLFtFCB"  /><label for="BrnLFtFCB" style="display:none;width:40;height:40;"> </label></td>
+                                            <td><input type="checkbox" id="BrnLFtBCB"  /><label for="BrnLFtBCB" style="display:none;width:40;height:40;"> </label></td>
+                                        </tr>
+					 <tr>
+                                            <td></td>
+                                            <td><textarea rows=5 cols=60 id="brnNotes" style="display:none" ></textarea></td>
+                                         </tr>
+                                        <tr>
+                                            <td><button id="brnTotButton" STYLE="font-size:80%;" type='submit'>Total</button></td>
+                                            <td><input type="text" id="BrnTot" size="5" class="txtsm" /></td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                            </tr>
+                            <tr>
+
+                                    <td colspan="2"></td>
+
+                            </tr>
+                        </table>
+
+
+
+
+</td></tr></table>
+		<!---------burns end------------------ -->
+</div>
+<!------------------------------ Burns end------------------------------------- -->
+</span>
+
+<!------------------------------ Systemic Exam-body end----------------------------------------------- -->
+</div>
+<!------------------------ Systemic Exam-dis1 end------------------------------------------------------- -->
+
+<!------------------------ Investigations start------------------------------------------------------- -->
+
+<div id="inve_system" class="investborder"  style="font-size:5px;display:none ">
+
+<div id="in_vest" style="display:none" >
+	<center><table  align="center"  valign="top"  class="tabinves" >
+	<tr>
+	<td><input type="checkbox" name="cbc" id="cbc" class="custom" />
+	<label for="cbc" style="width:100%">Complete Blood Count</label></td>
+	<td><input type="checkbox" name="pft" id="pft" class="custom" />
+	<label for="pft" style="width:100%">Pulmonary Function</label></td>
+	<td><input type="checkbox" name="bc" id="bc" class="custom" />
+	<label for="bc" style="width:100%">Blood Culture</label></td>
+	<td><input type="checkbox" name="aud" id="aud" class="custom" />
+	<label for="aud" style="width:100%">Audiogram</label></td>
+	</tr>
+	<tr>
+	<td><input type="checkbox" name="ps" id="ps" class="custom" />
+	<label for="ps" style="width:100%">Peripheral Smear</label></td>
+	<td><input type="checkbox" id="lft" name="lft"/>
+	<label for="lft" style="width:100%">Liver Function Test</label></td>
+	<td><input type="checkbox" id="uc" name="uc"/>
+	<label for="uc" style="width:100%">Urine Culture</label></td>
+	<td><input type="checkbox" id="sr" name="sr"/>
+	<label for="sr" style="width:100%">Stool Routine</label></td>
+
+	</tr>
+	<tr>
+	<td><input type="checkbox" id="se" name="se"/>
+	<label for="se" style="width:100%">Serum Electrolytes</label></td>
+	<td><input type="checkbox" id="lp" name="lp"/>
+	<label for="lp" style="width:100%">Lipid Profile</label></td>
+	<td><input type="checkbox" id="sc" name="sc"/>
+	<label for="sc" style="width:100%">Stool Culture</label></td>
+	<td><input type="checkbox" id="bu" name="bu"/>
+	<label for="bu" style="width:100%">Blood Urea</label></td>
+	</tr>
+	<tr>
+	<td><input type="checkbox" id="hiv" name="hiv"/>
+	<label for="hiv" style="width:100%">HIV</label></td>
+	<td><input type="checkbox" id="ecg" name="ecg"/>
+	<label for="ecg" style="width:100%">ECG</label></td>
+	<td><input type="checkbox" id="bsf" name="bsf"/>
+	<label for="bsf" style="width:100%">Blood Sugar Fasting</label></td>
+	<td><input type="checkbox" id="hba" name="hba"/>
+	<label for="hba" style="width:100%">HBsAg</label></td>
+	</tr>
+	<tr>
+	<td><input type="checkbox" id="ur" name="ur"/>
+	<label for="ur" style="width:100%">Urine Routine</label></td>
+	<td><input type="checkbox" id="scn" name="scn"/>
+	<label for="scn" style="width:100%">Serum Creatinine</label></td>
+	<td><input type="checkbox" id="ech" name="ech"/>
+	<label for="ech" style="width:100%">Echo</label></td>
+	<td><input type="checkbox" id="xr" name="xr"/>
+	<label for="xr" style="width:100%">X-Ray</label></td>
+	</tr>
+	<tr>
+	<td><input type="checkbox" id="bspp" name="bspp"/>
+	<label for="bspp" style="width:100%">Blood Sugar Post Prandial</label></td>
+	<td><input type="checkbox" id="bsr" name="bsr"/>
+	<label for="bsr" style="width:100%">Blood Sugar Random</label></td>
+	<td><input type="checkbox" id="ua" name="ua"/>
+	<label for="ua" style="width:100%">Ultrasound Abdomen</label></td>
+	<td><input type="checkbox" id="gtt" name="gtt"/>
+	<label for="gtt" style="width:100%">Glucose Tolerance</label></td>
+
+	</tr>
+	</table>
+		</center>
+
+</div>
+<table class="tabinves">
+		<tr><td>
+			<div id="one1"><button id="viewRslts" name="viewRslts" STYLE="font-size:100%;">Show Result Forms</button></div></td>
+<td>
+			<div id="two2"><button id="showTsts" name="showTsts" STYLE="font-size:100%;">Select Tests</button></div></td></tr>
+		</table>
+
+
+
+</div>
+
+<div id="inv-body" style="display:none" class="investborder">
+
+<span id="bc1"  style="display:none" class="inv_1" >
+<table   valign="top">
+<tr> <div align="center" class="ui-state-active">Blood Culture</div> </tr>
+<tr valign="top">
+<td colspan=3><textarea   class="intara" name="bldcnt" id="bldcnt" placeholder="Summary"></textarea></td></tr>
+<tr><td><button id="bldcntbtn"  STYLE="font-size:80%;" type='submit'>  Update</button></td></tr>
+</table>
+</span>
+
+<span id="pf1"  style="display:none" class="inv_1">
+
+<table   valign="top">
+	<tr>
+	<div valign="top" class="ui-state-active">Pulmonary Function</div>
+	</tr>
+	<tr>
+	<td colspan=3><textarea class="intara" name="pftSummary" id="pftSummary" placeholder="Summary"></textarea></td></tr>
+        <tr> <td> <button id="PuFuTe"  STYLE="font-size:80%;" type='submit'> Update </button>  </td>
+	</tr>
+</table>
+</span>
+
+<span id="aud1"  style="display:none" class="inv_1">
+<table  valign="top">
+	<tr> <div class="ui-state-active">Audiogram</div> </tr>
+	<tr><td colspan=3><textarea   class="intara" rows=3 cols=20    name="audSummary" id="audSummary" placeholder="Summary"></textarea></td></tr>
+	<tr> <td> <button id="AudSum"  STYLE="font-size:80%;" type='submit'>  Update</button>  </td> </tr>
+</table>
+</span>
+
+<span id="peri_sme1"  style="display:none" class="inv_1">
+<table  valign="top">
+	<tr>	<div align="center" class="ui-state-active">Peripheral Smear</div></td>	</tr>
+	<tr><td colspan=3><textarea class="intara"    name="persm" id="persm" placeholder="Summary"></textarea></td></tr>
+	<tr> <td> <button id="persmbtn"  STYLE="font-size:80%;" type='submit'>	Update	</button>  </td>	</tr>
+</table>
+</span>
+
+
+
+<span id="uc1"  style="display:none" class="inv_1">
+<table  valign="top">
+	<tr> <div align="center" class="ui-state-active">Urine Culture</div></td>	</tr>
+	<tr> <td colspan=3><textarea   class="intara"    name="urcul" id="urcul" placeholder="Summary"></textarea></td></tr>
+	<tr> <td> <button id="urculbtn"  STYLE="font-size:80%;" type='submit'>  Update</button>  </td> </tr>
+</table>
+</span>
+
+<span id="gtt1"  style="display:none" class="inv_1">
+<table  valign="top">
+	<tr>	<div align="center" class="ui-state-active">Glucose Tolerance</div>	</td>	</tr>
+	<tr>	<td colspan=3><textarea   class="intara" rows=3 cols=20    name="glucot" id="glucot" placeholder="Summary"></textarea></td></tr>
+	<tr><td> <button id="gttbtn"  STYLE="font-size:80%;" type='submit'>  Update</button>  </td>  </tr>
+</table>
+</span>
+
+<span id="sc1"  style="display:none" class="inv_1">
+<table   valign="top">
+	<tr> <div align="center" class="ui-state-active">Stool Culture</div> </td>	</tr>
+	<tr> <td colspan=3><textarea   class="intara"    name="scre" id="scre" placeholder="Summary"></textarea></td></tr>
+	<tr><td> <button id="screbtn"  STYLE="font-size:80%;" type='submit'>  Update</button>  </td> </tr>
+</table>
+</span>
+
+<span id="ech1"  style="display:none" class="inv_1">
+<table  valign="top">
+	<tr>
+	<div class="ui-state-active">Echocardiogram</div>
+	</tr>
+	<tr>
+	<td colspan=3><textarea class="intara"    name="ecSummary" id="ecSummary" placeholder="Summary"></textarea></td></tr><tr><td>
+        <button id="EchoSum" STYLE="font-size:80%;"  type='submit'> Update	</button>  </td>
+	</tr>
+  </table>
+</span>
+
+<span id="xr1"  style="display:none" class="inv_1">
+<table   valign="top">
+	<tr> <div class="ui-state-active">X-Ray</div>	</tr>
+	<tr> <td colspan=3><textarea class="intara"    name="xrSummary" id="xrSummary" placeholder="Summary"></textarea></td></tr>
+	<tr><td> <button id="Xrea" STYLE="font-size:80%;" type='submit'> Update </button>  </td> </tr>
+</table>
+</span>
+
+<span id="sr1"  style="display:none" class="inv_1">
+<table  valign="top">
+	<tr><div class="ui-state-active">Stool Routine</div></tr>
+	<tr>
+	<td colspan=3><textarea class="intara"    name="srSummary" id="srSummary" placeholder="Summary"></textarea></td></tr><tr><td>
+	<button id="srSum" STYLE="font-size:80%;"  type='submit'> Update	</button>  </td>
+	</tr>
+</table>
+</span>
+
+<span id="ur1"  style="display:none" class="inv_1">
+<table   valign="top">
+	<tr> <div class="ui-state-active">Urine Routine</div>	</tr>
+	<tr><td colspan=3><textarea class="intara"  name="urSummary" id="urSummary"  placeholder="Summary"></textarea></td></tr><tr><td>
+	<button id="urbtn" STYLE="font-size:80%;"  type='submit'> Update	</button>  </td>
+	</tr>
+</table>
+</span>
+
+<span id="ecg1"  style="display:none" class="inv_1">
+<table  valign="top">
+	<tr> <div class="ui-state-active">ECG</div> </tr>
+	<tr> <td colspan=3><textarea class="intara" rows=3 cols=20      name="ecgSummary" id="ecgSummary" placeholder="Summary"></textarea></td></tr>
+	<tr><td> <button id="Ecgbtn" STYLE="font-size:80%;"  type='submit'> Update</button>  </td> </tr>
+</table>
+</span>
+
+<span id="ua1"  style="display:none" class="inv_1">
+	<table  valign="top">
+	<tr><div class="ui-state-active">Ultrasound Abdomen</div></tr>
+	<tr> <td colspan=3><textarea class="intara"    name="uaSummary" id="uaSummary" placeholder="Summary"></textarea></td></tr><tr><td>
+        <button id="Ulsum" STYLE="font-size:80%;"  type='submit'> Update</button>  </td>
+	</tr>
+	</table>
+</span>
+
+<span id="bu1"  style="display:none" class="inv_1">
+<table   valign="top">
+	<tr>	<div class="ui-state-active">Blood Urea</div>	</tr>
+	<tr> 	<td >Result</td> <tr></tr> <td><input type="text"  class="tbx" id="buRslt"     name="buRslt" /></td></tr>
+	<tr> <td >Normal</td>  <tr></tr> <td><input type="text"  class="tbx" id="buNormal"     name="buNormal" /></td> </tr>
+	<tr> <td colspan=2><textarea class="intara"    name="buRemarks" id="buRemarks" placeholder="Remarks"></textarea></td></tr><tr><td>
+	<button id="BlUr"STYLE="font-size:80%;"   type='submit'> Update</button>  </td> </tr>
+</table>
+</span>
+
+<span id="hiv1"  style="display:none" class="inv_1">
+
+<table   valign="top">
+	<tr>	<div class="ui-state-active">HIV</div>	</tr>
+	<tr> 	<td >Result</td> <tr></tr> <td><input type="text"  class="tbx" id="hivRslt"      name="hivRslt" /></td></tr>
+	<tr> <td >Normal</td>  <tr></tr> <td><input type="text"  class="tbx" id="hivNormal"     name="hivNormal" /></td></tr>
+	<tr> <td colspan=2><textarea class="intara"    name="hivRemarks" id="hivRemarks" placeholder="Remarks"></textarea></td></tr><tr><td>
+	<button id="Hiv" STYLE="font-size:80%;"  type='submit'> Update </button>  </td> </tr>
+</table>
+
+</span>
+
+<span id="hba1"  style="display:none" class="inv_1">
+<table   valign="top">
+	<tr>	<div class="ui-state-active">HBsAg</div>	</tr>
+	<tr> 	<td >Result</td> <tr></tr> <td><input type="text"  class="tbx" id="hbaRslt"     name="hbaRslt" /></td></tr>
+	<tr> <td >Normal</td>  <tr></tr> <td><input type="text"  class="tbx" id="hbaNormal"     name="hbaNormal" /></td></tr>
+	<tr> <td colspan=2><textarea class="intara"    name="hbaRemarks" id="hbaRemarks" placeholder="Remarks"></textarea></td></tr><tr><td>
+	<button id="HBsAg" STYLE="font-size:80%;" type='submit'> Update </button> </td> </tr>
+</table>
+</span>
+
+<span id="scn1"  style="display:none" class="inv_1">
+<table   valign="top">
+	<tr>	<div class="ui-state-active">Serum Creatinine</div>	</tr>
+	<tr> 	<td >Result</td> <tr></tr> <td><input type="text"  class="tbx" id="scRslt" name="scRslt" /></td></tr>
+	<tr> <td >Normal</td>  <tr></tr> <td><input type="text"  class="tbx" id="scNormal" name="scNormal" /></td></tr>
+	<tr> <td colspan=2><textarea class="intara"    name="scRemarks" id="scRemarks" placeholder="Remarks"></textarea></td></tr><tr><td>
+	<button id="SuCr" STYLE="font-size:80%;"  type='submit'> Update</button> </td> </tr>
+</table>
+</span>
+
+<span id="se1"  style="display:none" class="inv_1">
+<table  valign="top">
+	<tr valign="top"><div class="ui-state-active">Serum Electrolytes</div> </tr>
+	<tr>
+	<td class="ui-state-default">Name</td>
+	<td class="ui-state-default">Result</td>
+	<td class="ui-state-default">Normal</td>
+	</tr>
+	<tr>
+	<td>Sodium</td>
+	<td><input type="text"  class="inp"   id="seNaRslt"     name="seNaRslt" /></td>
+	<td><input type="text"  class="inp"   id="seNaNormal"     name="seNaNormal" /></td>
+	</tr>
+	<tr>
+	<td>Potassium</td>
+	<td><input type="text"  class="inp"   id="seKRslt"     name="seKRslt" /></td>
+	<td><input type="text"  class="inp"   id="seKNormal"    name="seKNormal" /></td>
+	</tr>
+	<tr>
+	<td>Calcium</td>
+	<td><input type="text"  class="inp"   id="seCaRslt"     name="seCaRslt" /></td>
+	<td><input type="text"  class="inp"   id="seCaNormal"     name="seCaNormal" /></td>
+	</tr>
+	<tr>
+	<td>Phosphates</td>
+	<td><input type="text"  class="inp"   id="sePhRslt"     name="sePhRslt" /></td>
+	<td><input type="text"  class="inp"   id="sePhNormal"     name="sePhNormal" /></td>
+	</tr>
+	<tr>
+	<td>Chloride</td>
+	<td><input type="text"  class="inp"   id="seClRslt"     name="seClRslt" /></td>
+	<td><input type="text"  class="inp"   id="seClNormal"    name="seClNormal" /></td>
+	</tr>
+	<tr>
+	<td>Bicarbonate</td>
+	<td><input type="text"  class="inp"   id="seBcRslt"      name="seBcRslt" /></td>
+	<td><input type="text"  class="inp"   id="seBcNormal"     name="seBcNormal" /></td>
+	</tr>
+	<tr>
+	<td>Magnesium</td>
+	<td><input type="text"  class="inp"   id="seMgRslt"     name="seMgRslt" /></td>
+	<td><input type="text"  class="inp"   id="seMgNormal"     name="seMgNormal" /></td>
+	</tr>
+	<tr>
+	<td colspan=2><textarea class="intara"    name="seRemarks" id="seRemarks" placeholder="Remarks"></textarea></td>
+<td>
+         <button id="SeElTe" STYLE="font-size:80%;"  type='submit'>Update</button>  </td>
+	</tr>
+</table>
+</span>
+<span id="cbc1"  style="display:none" class="inv_1">
+<table 	  valign="top">
+	<tr> <div class="ui-state-active">Complete Blood Count</div> </tr>
+	<tr>
+	<td  class="ui-state-default">Name</td>
+	<td  class="ui-state-default">Result</td>
+	<td  class="ui-state-default">Normal</td>
+	</tr>
+	<tr>
+	<td>Hb%</td>
+	<td><input type="text"  class="inp"  id="cbcHbRslt"  required="required"   name="cbcHbRslt" size="8"/></td>
+	<td><input type="text"  class="inp"   id="cbcHbNormal"  required="required"   name="cbcHbNormal" size="8"/></td>
+	</tr>
+	<tr>
+	<td>PCV</td>
+	<td><input type="text"  class="inp"   id="cbcPCVRslt"  required="required"   name="cbcPCVRslt" size="8"/></td>
+	<td><input type="text"  class="inp"   id="cbcPCVNormal"  required="required"   name="cbcPCVNormal" size="8"/></td>
+	</tr>
+	<tr>
+	<td>ESR</td>
+	<td><input type="text"  class="inp"   id="cbcESRRslt"  required="required"   name="cbcESRRslt" size="8"/></td>
+	<td><input type="text"  class="inp"   id="cbcESRNormal"  required="required"   name="cbcESRNormal" size="8"/></td>
+	</tr>
+	<tr>
+	<td>Total Count</td>
+	<td><input type="text"  class="inp"   id="cbcTCRslt"  required="required"   name="cbcTCRslt" size="8"/></td>
+	<td><input type="text"  class="inp"   id="cbcTCNormal"  required="required"   name="cbcTCNormal" size="8"/></td>
+	</tr>
+	<tr>
+	<td>Neutrophil</td>
+	<td><input type="text"  class="inp"   id="cbcNeuRslt"  required="required"   name="cbcNeuRslt" size="8"/></td>
+	<td><input type="text"  class="inp"   id="cbcNeuNormal"  required="required"   name="cbcNeuNormal" size="8"/></td>
+	</tr>
+	<tr>
+	<td>Lymphocyte</td>
+	<td><input type="text"  class="inp"   id="cbcLymRslt"  required="required"   name="cbcLymRslt" size="8"/></td>
+	<td><input type="text"  class="inp"   id="cbcLymNormal"  required="required"   name="cbcLymNormal" size="8"/></td>
+	</tr>
+	<tr>
+	<td>Basophil</td>
+	<td><input type="text"  class="inp"   id="cbcBasRslt"  required="required"   name="cbcBasRslt" size="8"/></td>
+	<td><input type="text"  class="inp"   id="cbcBasNormal"  required="required"   name="cbcBasNormal" size="8"/></td>
+	</tr>
+	<tr>
+	<td>Eosinophil</td>
+	<td><input type="text"  class="inp"   id="cbcEosRslt"  required="required"   name="cbcEosRslt" size="8"/></td>
+	<td><input type="text"  class="inp"   id="cbcEosNormal"  required="required"   name="cbcEosNormal" size="8"/></td>
+	</tr>
+	<tr>
+	<td>Monocytes</td>
+	<td><input type="text"  class="inp"   id="cbcMonoRslt"  required="required"   name="cbcMonoRslt" size="8"/></td>
+	<td><input type="text"  class="inp"   id="cbcMonoNormal"  required="required"   name="cbcMonoNormal" size="8"/></td>
+	</tr>
+	<tr>
+	<td>Platelets</td>
+	<td><input type="text"  class="inp"   id="cbcPltRslt"  required="required"   name="cbcPltRslt" size="8"/></td>
+	<td><input type="text"  class="inp"   id="cbcPltNormal"  required="required"   name="cbcPltNormal" size="8"/></td>
+	</tr>
+	<tr>
+	<td colspan=2><textarea class="intara" name="cbcRemarks" id="cbcRemarks" placeholder="Remarks"></textarea></td>
+
+      <td> <button id="CoBlCo" STYLE="font-size:80%;" type='submit'>Update</button>
+	</td>
+	</tr>
+	</tr>
+
+</table>
+</span>
+
+<!-- ********** 1s ***********-->
+<span id="bsr1"  style="display:none" class="inv_1">
+<table   valign="top">
+<tr>	<div align="center" class="ui-state-active">Blood Sugar Random</div>	</td>	</tr>
+<tr>
+	<td class="ui-state-default">Name</td>
+	<td class="ui-state-default">Result</td>
+	<td class="ui-state-default">Normal</td>
+	</tr>
+	<tr>
+	<td>Random</td>
+	<td>
+	<input type="text" class="inp" id="bsrRslt"  name="bsrRslt" >
+	</td>
+	<td>
+	<input type="text" class="inp" id="bsrNormal"  name="bsrNormal" >
+	</td>
+	</tr>
+<tr>
+	<td colspan=2><textarea   class="intara" name="bsrsum" id="bsrsum" placeholder="Summary"></textarea></td>
+<td>
+        <button id="bsrbtn"  STYLE="font-size:80%;" type='submit'>  Update</button>  </td>
+
+</tr>
+</table>
+</span><br>
+<!-- ********** 1e ***********-->
+<!-- ********** 2s ***********-->
+<span id="bsf1"  style="display:none" class="inv_1">
+<table   valign="top">
+	<tr><div class="ui-state-active">Blood Sugar Fasting</div></tr>
+	<tr><td class="ui-state-default" >Name</td>
+<td class="ui-state-default" >Result</td>
+<td class="ui-state-default">Normal</td></tr>
+	<tr><td>Fasting</td>
+	<td><input type="text" class="inp" id="bsfRslt"  name="bsfRslt" ></td>
+	<td><input type="text" class="inp" id="bsfNormal"  name="bsfNormal" ></td>
+	</tr>
+	<tr> <td colspan=2><textarea class="intara" name="bsfSummary" id="bsfSummary"  placeholder="Summary"></textarea></td>
+<td>
+       	<button id="bsfbtn" STYLE="font-size:80%;"  type='submit'> Update </button>  </td>
+	</tr>
+</table>
+</span>
+<!-- ********** 2e ***********-->
+<!-- ********** 3s ***********-->
+<span id="bspp1"  style="display:none" class="inv_1">
+<table  valign="top">
+<tr><div align="center" class="ui-state-active">Blood Sugar Post Prandial</div>	</td> </tr>
+<tr><td class="ui-state-default">Name</td>
+    <td class="ui-state-default">Result</td>
+    <td class="ui-state-default">Normal</td>
+</tr>
+<tr> <td>Prandial</td> <td>
+<input type="text" id="bsppRslt"  name="bsppRslt" class="inp" />
+</td>
+<td>
+<input type="text" id="bsppNormal"  name="bsppNormal" class="inp" />
+</td>
+</tr>
+<tr>
+	<td colspan=2><textarea   class="intara"    name="bsppra" id="bsppra" placeholder="Summary"></textarea></td>
+<td>
+        <button id="bsppbtn"  STYLE="font-size:80%;" type='submit'>  Update</button>  </td>
+
+</tr>
+</table>
+</span>
+<!-- ********** 3e ***********-->
+
+
+
+<span id="lft1"  style="display:none" class="inv_1">
+<table   valign="top" >
+	<tr><div class="ui-state-active">Liver Function Test</div></tr>
+	<tr>
+	<td class="ui-state-default">Name</td>
+	<td class="ui-state-default">Result</td>
+	<td class="ui-state-default">Normal</td>
+	</tr>
+	<tr>
+	<td>Total Bilirubin</td>
+	<td><input type="text"  class="inp"   id="lftTBRslt"     name="lftTBRslt" /></td>
+	<td><input type="text"  class="inp"   id="lftTBNormal"    name="lftTBNormal" /></td>
+	</tr>
+	<tr>
+	<td>Direct Bilirubin</td>
+	<td><input type="text"  class="inp"   id="lftDBRslt"     name="lftDBRslt" /></td>
+	<td><input type="text"  class="inp"   id="lftDBNormal"     name="lftDBNormal" /></td>
+	</tr>
+	<tr>
+	<td>Indirect Bilirubin</td>
+	<td><input type="text"  class="inp"   id="lftIBRslt"     name="lftIBRslt" /></td>
+	<td><input type="text"  class="inp"   id="lftIBNormal"     name="lftIBNormal" /></td>
+	</tr>
+	<tr>
+	<td>Total Protein</td>
+	<td><input type="text"  class="inp"   id="lftTPRslt"     name="lftTPRslt" /></td>
+	<td><input type="text"  class="inp"   id="lftTPNormal"    name="lftTPNormal" /></td>
+	</tr>
+	<tr>
+	<td>Albumin</td>
+	<td><input type="text"  class="inp"   id="lftAlRslt"      name="lftAlRslt" /></td>
+	<td><input type="text"  class="inp"   id="lftAlNormal"    name="lftAlNormal" /></td>
+	</tr>
+	<tr>
+	<td>Globulin</td>
+	<td><input type="text"  class="inp"   id="lftGlRslt"     name="lftGlRslt" /></td>
+	<td><input type="text"  class="inp"   id="lftGlNormal"     name="lftGlNormal" /></td>
+	</tr>
+	<tr>
+	<td>A/G Ratiio</td>
+	<td><input type="text"  class="inp"   id="lftAGRRslt"     name="lftAGRRslt" /></td>
+	<td><input type="text"  class="inp"   id="lftAGRNormal"     name="lftAGRNormal" /></td>
+	</tr>
+	<tr>
+	<td>Alkaline Phosphatase ALP</td>
+	<td><input type="text"  class="inp"   id="lftALPRslt"     name="lftALPRslt" /></td>
+	<td><input type="text"  class="inp"   id="lftALPNormal"     name="lftALPNormal" /></td>
+	</tr>
+	<tr>
+	<td>Gamma Glutamyl Transferase GGT</td>
+	<td><input type="text"  class="inp"   id="lftGGTRslt"     name="lftGGTRslt" /></td>
+	<td><input type="text"  class="inp"   id="lftGGTNormal"     name="lftGGTNormal" /></td>
+	</tr>
+	<tr>
+	<td>Alanine Transaminase ALT</td>
+	<td><input type="text"  class="inp"   id="lftALTRslt"     name="lftALTRslt" /></td>
+	<td><input type="text"  class="inp"   id="lftALTNormal"     name="lftALTNormal" /></td>
+	</tr>
+	<tr>
+	<td>Aspartate Aminotransferase AST</td>
+	<td><input type="text"  class="inp"   id="lftASTRslt"     name="lftASTRslt" /></td>
+	<td><input type="text"  class="inp"   id="lftASTNormal"     name="lftASTNormal" /></td>
+	</tr>
+	<tr>
+	<td>Lactate Dehydogenase LDH</td>
+	<td><input type="text"  class="inp"   id="lftLDHRslt"     name="lftLDHRslt" /></td>
+	<td><input type="text"  class="inp"   id="lftLDHNormal"     name="lftLDHNormal" /></td>
+	</tr>
+	<tr>
+	<td colspan=1><textarea class="intara" name="lftRemarks" id="lftRemarks" placeholder="Remarks"></textarea></td>
+<td>
+         <button id="LiFuTe" STYLE="font-size:80%;" type='submit' >
+  		Update </button>
+	</td>
+	</tr>
+</table>
+</span>
+
+
+<span id="lp1"  style="display:none" class="inv_1">
+<table valign="top">
+	<tr valign="top"> <div class="ui-state-active">Lipid Profile</div> </tr>
+	<tr>
+	<td class="ui-state-default">Fats</td>
+	<td class="ui-state-default">Result</td>
+	<td class="ui-state-default">Range</td>
+	</tr>
+	<tr>
+	<td>Total Cholesterol</td>
+	<td><input type="text"  class="inp"   id="lpTCRslt"     name="lpTCRslt"/></td>
+	<td><input type="text"  class="inp"   id="lpTCNormal"     name="lpTCNormal"/></td>
+	</tr>
+	<tr>
+	<td>Triglycerides</td>
+	<td><input type="text"  class="inp"   id="lpTgRslt"     name="lpTgRslt"/></td>
+	<td><input type="text"  class="inp"   id="lpTgNormal"     name="lpTgNormal"/></td>
+	</tr>
+	<tr>
+	<td>LDL cholesterol</td>
+	<td><input type="text"  class="inp"   id="lpLDLRslt"     name="lpLDLRslt"/></td>
+	<td><input type="text"  class="inp"   id="lpLDLNormal"     name="lpLDLNormal"/></td>
+	</tr>
+	<tr>
+	<td>HDL cholesterol</td>
+	<td><input type="text"  class="inp"   id="lpHDLRslt"     name="lpHDLRslt"/></td>
+	<td><input type="text"  class="inp"   id="lpHDLNormal"     name="lpHDLNormal"/></td>
+	</tr>
+	<tr>
+	<td>VLDL</td>
+	<td><input type="text"  class="inp"   id="lpVLDLRslt"     name="lpVLDLRslt"/></td>
+	<td><input type="text"  class="inp"   id="lpVLDLNormal"     name="lpVLDLNormal"/></td>
+	</tr>
+	<tr>
+	<td>Cholesterol / HDL ratio</td>
+	<td><input type="text"  class="inp"   id="lpCHRRslt"     name="lpCHRRslt"/></td>
+	<td><input type="text"  class="inp"   id="lpCHRNormal"     name="lpCHRNormal"/></td>
+	</tr>
+	<tr>
+	<td colspan=2><textarea class="intara"    name="lpRemarks" id="lpRemarks"  placeholder="Remarks"></textarea></td>
+<td>
+        <button id="LiPr" STYLE="font-size:80%;"  type='submit'>Update</button>  </td>
+	</tr>
+	</table>
+</span>
+
+
+
+
+</div>
+<!------------------------ Investigations end------------------------------------------------------- -->
+
+
+
+<!------------------------ Prescription start----------------------------------------------------- -->
+<div id="daspreshd" style="display:none">
+
+
+
+<table class="datb" >
+<tr ALIGN="CENTER" class="ui-state-default"><td>PRESCRIPTION</td></tr>
+<tr ALIGN="CENTER"><td>
+<div id="daspres" style="display:none">
+<!-- ------------------------------------------------- -->
+<table  class="ui-widget-header" align="left" class="display dt-example" width="100%">
+<tr>
+<td valign="top" colspan="2">
+<table cellpadding="0" cellspacing="0" border="0"  class="display dt-example" id="tempresc" width="100%">
+<tbody>
+</tbody>
+</table>
+</th>
+</td>
+</tr>
+</table>
+<!--------------------------------------------------- -->
+</div>
+</td></tr></table>
+
+
+<div class="dynamic-form" align="center">
+<div class="inputs3">
+<table class="display dt-example">
+<tr><th class="ui-state-default">Diagnosis</th></tr>
+<tr><td class="ui-state-default" rowspan="1" colspan="1">
+<input type="text" class="dise" id="disease1" name="dynamicpres[]" size="7" /></td><td><button id="favour" STYLE="font-size:80%;" >My Favourites</button></td>
+</tr>
+<tr><th class="ui-state-default">Drug</th><th class="ui-state-default">Brand</th><th class="ui-state-default">Route</th><th class="ui-state-default">Dosage</th><th class="ui-state-default">M</th><th class="ui-state-default">A</th><th class="ui-state-default">E</th><th class="ui-state-default">N</th><th class="ui-state-default">Dur</th><th class="ui-state-default">Quan</th><th class="ui-state-default">Remarks</th><td><img src="img/delete.png" border="0" width="17" height="17" class="curclr"></td></tr>
+<tr>
+<td class="ui-state-default" rowspan="1" colspan="1">
+<!--<div id="drugp1">-->
+<input type="text" class="fieldpres drug inter" id="pdrug1" name="dynamicpres[]" size="7" /><!--</div>-->
+<!--<input type ="hidden" name="dynamicpres[]" class="fieldpres inter"  size="7"  id="drug" />-->
+</td>
+
+<td  class="ui-state-default" rowspan="1" colspan="1">
+
+ <input type ="text"  class="fieldpres brand" id="brand1" name="dynamicpres[]" size="7" />
+ <!--<input type ="hidden"  name="dynamicpres[]" class="fieldpres"  size="7"  id="brand" />-->
+</td>
+
+<td  class="ui-state-default" rowspan="1" colspan="1">
+
+ <input type ="text"  class="fieldpres route" id="route1" name="dynamicpres[]" size="7"  />
+</td>
+
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpres vrysml" id="dosage1" name="dynamicpres[]" size="7" /></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpres vrysml" id="morning1" name="dynamicpres[]" size="3" /></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpres vrysml" id="afternoon1" name="dynamicpres[] "size="3" /></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpres vrysml" id="evening1" name="dynamicpres[] "size="3" /></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpres vrysml" id="night1" name="dynamicpres[] "size="3" /></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpres vrysml" id="duration1" name="dynamicpres[] "size="9" /></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpres vrysml" id="quantity1" name="dynamicpres[] "size="9" readonly="true" /></td>
+<td class="ui-state-default" rowspan="1" colspan="1"><input type="text" class="fieldpres" id="remarks1" name="dynamicpres[] "size="9" /></td>
+
+<td><a href="#" class="addpresc" id="addbut"><img src="img/add.png" border="0" width="17" height="17" class="textmiddle"/></a></td>
+</tr>
+</table>
+</div>
+<button id="finter" STYLE="font-size:80%;">Find Interaction</button>
+<button id="pressub" STYLE="font-size:80%; display:none;">OK</button>
+
+
+</div>
+
+<table id="interaction">
+
+</table>
+
+</div>
+<!------------------------ Prescription end------------------------------------------------------- -->
+
+
+<!------------------------Medical Certi start----------------------------------------------------- -->
+
+<div id= "medi-cert1" style="display:none">
+	<table width="80%">
+	<tr>
+	<td  colspan=2 ><textarea class="mediarea"  id="prvRepRec1"     name="prvRepRec"></textarea></td>
+	</tr>
+	<tr >
+	<td  align="right"></td>
+<td   align="right"> <textarea  id="prvRepMedi"  placeholder="Signature"   name="prvRepMedi"></textarea></td>
+	</tr>
+	<tr>
+	<td width="70%"></td>
+<td align="right"><button id="AdMedicerti" STYLE="font-size:80%;"  type='submit'>Update</button></td>
+	</tr>
+	</table>
+</div>
+
+<!------------------------ Medical Certi end------------------------------------------------------- -->
+
+<div id= "mgmt-repo1"  style="display:none">
+<table width="85%" class="repoborder">
+<tr ALIGN="CENTER"><td colspan="2"><div class="ui-state-default" style="padding:3px;">Report</div></td></tr>
+<tr>
+<td width="50%">Diagnosis</td>
+<td width="50%" align="right"><input type="text" id="Diagno_rep" class="txtlong"  /></td>
+</tr>
+<tr>
+<td>Clinical findings and diagnostic test</td>
+<td align="right"><input type="text" id="Clidia_rep" class="txtlong" /></td>
+</tr>
+<tr>
+<td>Current treatment plan, including medications</td>
+<td align="right"><input type="text" id="Curinc_rep" class="txtlong" /></td>
+</tr>
+<tr>
+<td>Allergies</td>
+<td align="right"><input type="text" id="aller_rep" class="txtlong" /></td>
+</tr>
+<tr>
+<td>Other</td>
+<td align="right"><input type="text" id="Other_rep" class="txtlong" /></td>
+</tr>
+<tr align="center"><td colspan="2"> <button STYLE="font-size:80%;" id="Sub_rep">Update</button></td>
+</tr>
+</table>
+</div>
+
+<!------------------------Fitness Certificate start----------------------------------------------------- -->
+
+
+<div id= "fitnes-cert1" style="display:none">
+
+	<table >
+	<tr>
+	<td colspan=3 align="center" >
+	<textarea  class ="tarafit" id="mcRepFnd" name="prvRepFnd">This is to certify that Mr./Ms. -----------------------, son/daughter/wife of -------------- has been examined by me and is fit  for the specified category of employment.
+</textarea></td>
+	</tr>
+	<tr>
+	<td colspan=3 align="center" ><textarea class ="tarafit"  id="mcRepFI"     name="mcRepFI"> This is to certify that Mr./Ms. -----------------------, son/daughter/wife of -------------- has been examined by me and is unfit  for the specified category of employment.
+</textarea></td>
+	</tr>
+	<tr>
+	<td colspan=3 align="center" ><textarea class ="tarafit" id="mcRepRec"   name="mcRepRec">This is to certify that Mr./Ms. -----------------------, son/daughter/wife of -------------- has been examined by me and has a disability but can be employed with specific limitations.
+Disability
+Limitation
+</textarea></td>
+	</tr>
+	<tr>
+	<td width="70%"></td>
+	<td align="right"><textarea  id="mcRepSig"     placeholder="Signature" ></textarea></td>
+	</tr>
+	<tr>
+	<td></td>
+	<td align="right"> <button id="Adfitnes"  STYLE="font-size:80%;" type='submit'>
+Update </button></td>
+	</tr>
+	</table>
+</div>
+
+
+<!------------------------ Fitness Certificate end------------------------------------------------------- -->
+<div id="logoutcontent" style="display:none"> <!-- logout prago start-->
+
+<div data-role="page" id="mainpage"  data-theme="c">
+
+	<!--	<div data-role="content" id="displogin" >
+	<center><h1>Login</h1></center>
+		<div data-role="fieldcontain">
+			<label for="url">Username:*</label>
+			<input class="required" id="lusername" name="uid_r" type="text" value="admin">
+		</div>
+		<div data-role="fieldcontain">
+			<label for="url">Password:*</label>
+			<input id="lpassword" name="pwd_r" type="password" value="">
+		</div>
+		<table class="table1" width="50%">
+		<tr><td width="50%"><button data-icon="delete" data-corners="false" data-theme="b" id ="logincancel" type="submit">cancel</button></td>
+		<td><button data-theme="b" data-corners="false" id ="loginok" type="submit">Login</button> </td></tr>
+		</table>
+
+
+
+	</div>
+-->
+	<div data-role="content" id="dispcontent" style="display:none">
+
+	<!--start basic details-->
+
+
+
+
+	<div data-role="fieldcontain" style="display:none">
+<input type="text" name="uid" id="uid" size=20 class="PtFields" value="Enter Id" style="color:gray;max-height: 50px;" onfocus="if(this.value=='Enter Id'){this.value=''};this._haschanged=true;this.style.color = 'black';" onblur="if(this.value==''){this.value='Enter Id'};this.style.color='gray';" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;" />
+
+
+
+		<div id='bt-data-dump'  style="display : none"></div>
+		<div id="measuring-dump"  style="display : none" ></div>
+		<div id='error-dump' style="display : none"></div>
+
+		<div id='bpm-dump'  style="display : none">
+				<h1>SYS</h1>
+				<input type="text" id="sys" name="sys" value="null" style="font-size:20px;font-weight:bold"/>
+				<h1>DIA</h1>
+				<input type="text" id="dia" name="dia" value="null" style="font-size:20px;font-weight:bold"/>
+		</div>
+		<div id='spo2-dump'  style="display : none">
+			<h1>SpO2</h1>
+			<input type="text" id="spo22" name="spo2" value="0"  style="font-size:20px;font-weight:bold"/>
+			<h1>Pulse</h1>
+			<input type="text" id="pulse2" name="pulse" value="null" style="font-size:20px;font-weight:bold"/>
+		</div>
+		<div id='therm-dump' style="display : none">
+			<h1>Temperature</h1>
+			<h1><input type="text" id="therm" name="therm" value="null" style="font-size:20px;font-weight:bold"/></h1>
+		</div>
+		<div id='gluco-dump' style="display : none">
+			<h1>Glucose Level</h1>
+			<input type="text" id="gluco" name="gluco" value="0" style="font-size:20px;font-weight:bold"/>
+		<input type="text" id="wscalval" name="wscalval" value="0" style="font-size:20px;font-weight:bold"/>
+		</div>
+		<!--<input data-role="button" type="submit" value ="SEND" name="bpSend" id="bpSend" data-theme='b'/input>-->
+
+
+
+
+
+	<table width="100%" height="100%" class="table1">
+
+	<tr>
+	<td height="100" width="20%">
+	<table  width ="100%">
+	<tr><td colspan=2 width="100%">
+		<div class="btnDefault">B.P
+	<img id="bpmGreen" align="right" src="images/Green.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="bpmOrange" align="right" src="images/Orange.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="bpmRed" align="right" src="images/Red.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	</div>
+	</td></tr>
+	<tr><td width="20%">
+	<button  id="bpm" name="bpm" >
+	<img src="images/bp.png" style="height:40px;width:40px;"></img></button>
+	</td><td>
+	<div id="bpmValueReturn" style="font-size:24px"></div>
+
+	<img id="bpspinner" align="right" src="images/spinner-bluey.gif" style="display:none;height:30px;width:30px;"  class="ui-btn-right"/>
+	</td>
+	</td>
+	</tr>
+	</table>
+	</td>
+
+	<td height="100" width="20%">
+	<table width="100%">
+	<div class="btnDefault">Pulse Oximeter
+	<img id="poxGreen" align="right" src="images/Green.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="poxOrange" align="right" src="images/Orange.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="poxRed" align="right" src="images/Red.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	</div>
+	<tr><td width="20%"><button  id="pox">
+	<img src="images/pox.png" style="height:40px;width:40px;"></img></button>
+	</td>
+	<td>
+	<div id="poxValueReturn" style="font-size:24px;"> </div>
+	<img id="poxspinner" align="right" src="images/spinner-bluey.gif" style="display:none;height:30px;width:30px;"  class="ui-btn-right"/></td>
+	</tr>
+	</table>
+	</td>
+
+	<td height="100" width="20%">
+	<table width="100%">
+	<div class="btnDefault">Thermometer
+	<img id="tempGreen" align="right" src="images/Green.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="tempOrange" align="right" src="images/Orange.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="tempRed" align="right" src="images/Red.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	</div>
+	<tr><td width="20%"><button  id="temp" name="temp">
+	<img src="images/thermo.png" style="height:40px;width:40px;"></img></button>
+	</td><td>
+	<div id="thermValueReturn" style="font-size:24px"></div>
+	<img id="tempspinner" align="right" src="images/spinner-bluey.gif" style="display:none;height:30px;width:30px;"  class="ui-btn-right"/>
+	</td></tr>
+	</table>
+	</td>
+
+	<td height="100" width="20%">
+	<table width="100%">
+	<div class="btnDefault">Glucometer
+	<img id="glucometerGreen" align="right" src="images/Green.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="glucometerOrange" align="right" src="images/Orange.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="glucometerRed" align="right" src="images/Red.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	</div>
+	<tr><td width="20%"><button  id="glucometer" name="glucometer">
+	<img src="images/sml.png" style="height:40px;width:40px;"></img></button></td>
+	<td><div id="glucoValueReturn" style="font-size:24px"></div>
+	<img id="glucospinner" align="right" src="images/spinner-bluey.gif" style="display:none;height:30px;width:30px;"  class="ui-btn-right"/>
+	</td></tr>
+	</table>
+	</td>
+	</tr>
+
+
+	<tr>
+	<td height="100" width="20%">
+	<table width="100%">
+	<div class="btnDefault">
+	<img id="wsGreen" align="right" src="images/Green.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="wsOrange" align="right" src="images/Orange.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="wsRed" align="right" src="images/Red.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	</div>
+	<tr><td  width="20%">
+	<button id="wscale">
+	<img src="images/weighingscal.png"style="height:40px;width:40px;"></img></button>
+	</td>
+	<td><div id="wscaleValueReturn" style="font-size:24px"></div>
+
+
+	<img id="wscalespinner" align="right" src="images/spinner-bluey.gif" style="display:none;height:30px;width:30px;"  class="ui-btn-right"/>
+	</td>
+	</tr>
+	</table>
+	</td>
+
+	<td height="100" width="20%">
+	<table width="100%">
+	<div class="btnDefault">Torch
+	<img id="torchGreen" align="right" src="images/Green.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="torchOrange" align="right" src="images/Orange.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="torchRed" align="right" src="images/Red.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	</div>
+	<tr><td  width="20%">
+	<button id="torchOn">
+	<img src="images/torch.png"style="height:40px;width:40px;"></img></button>
+	</td>
+	<td>
+	<div id="torchValueReturn"></div>
+	<div class="torchlongflip">
+			<select name="torchval" id="torchval" data-role="slider" data-mini="true">
+				<option  value="Off">OFF</option>
+				<option  value="On" >ON</option>
+
+			</select>
+		</div>
+	<img id="torchspinner" align="right" src="images/spinner-bluey.gif" style="display:none;height:30px;width:30px;"  class="ui-btn-right"/>
+	</td>
+	</tr>
+	</table>
+	</td>
+
+	<td height="100">
+	<table width="100%">
+	<div class="btnDefault">Stethoscope
+	<img id="stethGreen" align="right" src="images/Green.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="stethOrange" align="right" src="images/Orange.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="stethRed" align="right" src="images/Red.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	</div>
+	<tr><td width="65%"><button  id="steth" name="steth">
+	<img src="images/steth.png" style="height:40px;width:40px;"></img></button>
+	<img id="stethspinner" align="center" src="images/spinner-bluey.gif" style="display:none;height:30px;width:30px;"  class="ui-btn-right"/>
+	</td><td>
+	<audio src="file:///mnt/sdcard/prago/steth.wav" controls="true" preload ="none" style="width:80%;heigth:20px"></audio>
+	</td></tr>
+	</table>
+	</td>
+
+	<td height="100">
+	<table width="100%" >
+	<div class="btnDefault">ECG
+	<img id="ecgGreen" align="right" src="images/Green.png" style="displ	ay:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="ecgOrange" align="right" src="images/Orange.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	<img id="ecgRed" align="right" src="images/Red.png" style="display:none;height:20px;width:20px;"  class="ui-btn-right"/>
+	</div>
+	<tr><td style="text-align:center">
+	<button id="ecgo"><img src="images/ecg.png" style="height:40px;width:80px;"></img></button>
+	<img id="ecgspinner" align="center" src="images/spinner-bluey.gif" style="display:none;height:30px;width:30px;"  class="ui-btn-right"/>
+	</td>
+	</tr>
+	</table>
+	</td>
+	</tr>
+
+	<tr><td colspan=5 width="100%">
+	<button id="bpSend">Upload to Server</button>
+	</td>
+	</tr>
+	<tr>
+	<td height="100"  colspan=5>
+	<table width="100%">
+	<tr>
+	<td>
+		<div id="chart1" style="height:160px; display : none "></div>
+		<div id="chart2" style="height:160px; display : none "></div>
+	<!--	<div id="chart3" style="height:180px; display : none "></div>		-->
+	</td>
+	</tr>
+	</table>
+	</td>
+	</tr>
+
+
+	</table>
+	</div>
+
+	</div>
+<!--end basic details-->
+
+
+<!--start bluetooth-->
+
+<div id="bluth" style="display:none">
+
+<table width="100%" class="table1">
+<tr><td width="5%"><img src="images/bt1.png" width="50" height="50"></img></td>
+
+<td colspan=5>
+
+	<button id="discoverBT" data-mini="true" data-corners="false">Discover</button>
+	<div id="discovering" style="display:none;"><img src="images/discover.gif"></img></div>
+	<select id='bt-devices-select' data-corners="false">
+
+       	</select>
+      	<select id='bt-bondeddevices-select' data-corners="false">
+		<option value="null">-select Device From List-</option>
+		<option value="+tronic SwissKnife">+tronic SwissKnife</option>
+		<option value="Ultra2 Glucometer">Ultra2 Glucometer</option>
+		<option value="3 Lead ECG">3 Lead ECG</option>
+		<option value="Weighing Scale">Weighing Scale</option>
+	</select>
+
+	<!--<button id="bondedBT" data-mini="true" data-corners="false">Bonded Devices</button>-->
+
+	<table width="75%" class="table1"> <tr>
+	<td><button id="selectval" data-mini="true" data-corners="false">ADD</button></td>
+	<td><button id="delch" data-mini=true data-corners=false >Delete All</button></td>
+	</tr></table>
+
+
+	<table id="readSuccess" class="table1"><tr><th>Device Name</th><th>Device Address</th><th>Device Type</th><th> </th></tr>
+</table>
+	<span id="readSuccess1"></span>
+</td></tr>
+<tr><td><img src="images/server.png" width="50" height="50"></img></td>
+
+<td>
+<div id="curser" ></div>
+<input type="text" class="PtFields" style="font-size:large;color:gray;" name="server" id="server" size=20  value="Server Address" onfocus="if(this.value=='Server Address'){this.value=''};this._haschanged=true;this.style.color = 'black';"   onblur="if(this.value==''){this.value='Server Address';this.style.color='gray';};"/><br></td><td><input type="button" data-corners="false" id="servercpcl" value="Set Server"></td><input type="hidden" id="servername"></tr>
+
+<tr><td><img src="images/changepwd.png" width="55" height="55"></img></td>
+<td colspan=2>
+<input type="password" style="font-size:large;color:gray;" name="curpwd" id="curpwd" size=20 placeholder="Current Password" value="" />
+
+	<input type="password"  style="font-size:large;color:gray;" name="newpwd" id="newpwd" placeholder="New Password" value=""/>
+
+	<input type="button" id="setpassword" data-corners="false" value="Set New Password"></button>
+
+
+</td></tr>
+
+
+</table>
+<br />
+
+
+<div id="resvaldiisp" style="display:none"></div>
+</div>
+<!--end bluetooth-->
+
+	</div>
+</div><!-- full end-->
+
+
+</center>
+ </div>
+ <script type="text/javascript">
+var currtime;
+var currhour;
+var currminute;
+var currsecond;
+var AP;
+function writeTime()
+{
+currtime = new Date();
+currhour = currtime.getHours();
+currminute = currtime.getMinutes();
+currsecond = currtime.getSeconds();
+
+if (currminute < 10)
+	currminute = "0" + currminute;
+
+if (currsecond < 10)
+	currsecond = "0" + currsecond;
+
+AP = (currhour >= 12 ? "PM" : "AM");
+
+
+if (currhour > 12)
+	currhour -= 12;
+else if(currhour == 0)
+	currhour = 12;
+
+var chdate = currhour + ":" + currminute + ":" + currsecond + " " + AP;
+$("#cur_time").text(chdate);
+$("#cur_time1").text(chdate);
+
+setTimeout("writeTime()",1000);
+}
+writeTime(); //begin the script
+</script>
+ <script type="text/javascript">
+//paging
+
+$(function(){
+$("#callcan").click(function () {
+var section =  document.getElementById('checkval');
+section.contenteditable = "true";
+var pager = new Pager('checkval', 3); 
+        pager.init(); 
+        pager.showPageNav('pager', 'pageNavPosition'); 
+        pager.showPage(1);
+   });
+
+});
+       </script>
+</body>
+
+
+</html>
+

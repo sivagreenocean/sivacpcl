@@ -1,0 +1,175 @@
+$(function(){
+
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1;//January is 0!
+
+var yyyy = today.getFullYear();
+if(dd<10){dd='0'+dd}
+if(mm<10){mm='0'+mm}
+
+onload = function(){
+var todaydate = dd+'/'+mm+'/'+yyyy;
+}
+
+
+$("#submit").click(function(){
+
+var validuname = "Wrong User Name";
+var validpwd = "Wrong Password";
+var validup = "Wrong";
+var nores = "No Response...";
+
+
+	 	function updated(msg){
+	 	$("#toast").effect("highlight", {}, 3000);
+		$("#toast").text(msg);
+		$("#toast").slideUp( 300 );
+}
+
+$("div[id='submit']").removeClass('blue');
+$(this).addClass('clicked');
+	var names=$("#unamev").val();
+	var pass=$("#passv").val();
+	var passhash = CryptoJS.MD5(pass).toString();
+	login();
+
+
+function login()
+	{
+
+	$.ajax({
+'dataType': 'json',
+'type'    : 'GET',
+'url'     : 'http://greenocean.in/rest-tst/index.php/api/example/setserver',
+'data'    : {data:'1'},
+'success' : function(data){
+if (data.response =='true')
+{
+//newurl =data.server_name;
+
+$("#servername").val(data.server_name);
+}
+
+}
+
+});
+
+	$.ajax({
+
+			'dataType': 'json',
+			'type'    : 'GET',
+			'url'     : 'http://greenocean.in/rest-tst/index.php/api/example/login',
+			'data'    : {data: names},
+			'success' : function(data)
+			{
+				if (data.response =='true')
+					{
+					if(names==data.username)
+					{
+
+						if (passhash==data.password) {
+					//alert("ads");
+					//$("#u_name").val(data.name);
+					//window.location="login.html";
+
+					   var lrole = data.role;
+
+					 if (lrole=="patient") {
+					           $('input').prop('readonly',true);
+  								  $('textarea').prop('readonly',true);
+  								  $('.usrper').prop('readonly',false);
+  								  $('button').attr("disabled", "disabled");
+   							   $('#viewRslts').removeAttr("disabled");
+  								   $('#showTsts').removeAttr("disabled");
+									$('#getdetails').removeAttr("disabled");
+									$('#cur_med_das').hide();
+$('#patdet_dash').hide();
+$('#welcome_dash_pat').show();
+
+
+							}
+						else if(lrole=="Admin") {
+							$('#welcome_dash_doc').show();
+							$('#pidget').hide();
+							$('#navi_doct').hide();
+							$('#navi_admin').show();
+
+
+
+}else if(lrole=="doc") {
+							 $('#dashhist').show();
+							  $('#welcome_dash_doc').show();
+							 // $('#Histsche').show();
+							    $('#navi_doct').show();
+							     $('#navi_admin').hide();
+
+
+
+
+}
+
+
+
+						var doc_name = data.name;//"sivaprakasam selvaraj";
+						 $('#u_name').val(doc_name);
+						var p2 = "Welcome  :  "+doc_name;
+  					   $('#doc_na').text(p2);
+
+
+					$("#container").hide();
+					$("#lonly").show();
+
+					}
+				   else {
+				  updated(validpwd);
+
+				   }
+
+					}
+					}	else
+					{
+
+    				updated(validup);
+
+						$("#uname").val("");
+						$("#pass").val("");
+						$("#uname").focus();
+						$("#container").show();
+						$("#fod").hide();
+						$("#login_only").hide();
+
+					}
+				},
+		'error'	  :function(){
+
+		updated(nores);
+		//alert("no response");
+		}
+              });
+	}
+
+
+	$.ajax({
+'dataType': 'json',
+'type'    : 'GET',
+'url'     : 'http://greenocean.in/rest-tst/index.php/api/example/setserver',
+'data'    : {data:'1'},
+'success' : function(data){
+if (data.response =='true')
+{
+//newurl =data.server_name;
+
+$("#servername").val(data.server_name);
+}
+newurl =$("#servername").val();
+//alert(newurl);
+}
+
+});
+
+
+
+});
+
+});
